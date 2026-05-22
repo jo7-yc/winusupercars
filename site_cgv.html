@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms &amp; Conditions — WIN U SUPERCARS</title>
+<style>
+:root {
+  --bg: #FFFFFF;
+  --text: #111111;
+  --text-muted: #888888;
+  --green: #114F33;
+  --green-light: #005128;
+  --green-bright: #22c55e;
+  --border: #E5E5E5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ── TOP BANNER ── */
+.top-banner {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.top-banner .apple-pay-icon {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 86px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  background: var(--green);
+  color: #fff;
+  padding: 8px 14px;
+  margin-right: 40px;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+}
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover { color: var(--green); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.nav-lang { font-size: 14px; font-weight: 500; color: var(--green); cursor: pointer; }
+.nav-auth { font-size: 14px; font-weight: 500; color: var(--text); }
+.nav-auth a { transition: color 0.2s; }
+.nav-auth a:hover { color: var(--green); }
+.nav-cart { width: 20px; height: 20px; cursor: pointer; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1002;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  transition: all 0.3s;
+}
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 86px;
+  left: 0; right: 0; bottom: 0;
+  background: #fff;
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.mobile-menu.active { display: flex; }
+.mobile-menu a { font-size: 18px; font-weight: 600; color: var(--text); }
+.mobile-menu a:hover { color: var(--green); }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  padding: 80px 48px 60px;
+  text-align: center;
+  background: var(--bg);
+}
+
+.page-hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.page-hero p {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.page-hero .update-date {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* ── TOC ── */
+.toc {
+  max-width: 900px;
+  margin: 0 auto 48px;
+  padding: 32px 40px;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+
+.toc h2 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 20px;
+}
+
+.toc ol {
+  list-style: none;
+  counter-reset: toc-counter;
+  columns: 2;
+  column-gap: 40px;
+}
+
+.toc ol li {
+  counter-increment: toc-counter;
+  margin-bottom: 10px;
+  break-inside: avoid;
+}
+
+.toc ol li a {
+  color: #555;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.toc ol li a::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 24px;
+}
+
+.toc ol li a:hover { color: var(--green); }
+
+/* ── ARTICLES ── */
+.legal-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 48px 80px;
+}
+
+.article {
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.article:last-child {
+  border-bottom: none;
+}
+
+.article-number {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.article h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.article p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+.article p:last-child { margin-bottom: 0; }
+
+.article ul {
+  list-style: none;
+  margin: 14px 0;
+  padding-left: 16px;
+}
+
+.article ul li {
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.8;
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.article ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.article strong {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.article a {
+  color: var(--green);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.article a:hover {
+  border-bottom-color: var(--green);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #fff;
+  border-top: 1px solid #eee;
+  padding: 60px 48px 32px;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 48px;
+}
+
+.footer-logo {
+  font-size: 16px;
+  font-weight: 900;
+  background: var(--green);
+  color: #fff;
+  padding: 6px 12px;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.footer-tagline { font-size: 13px; color: #999; line-height: 1.6; }
+
+.footer-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 40px;
+}
+
+.footer-links a { font-size: 14px; font-weight: 500; color: #555; transition: color 0.2s; }
+.footer-links a:hover { color: var(--green); }
+
+.footer-contact { text-align: right; }
+.footer-email { font-size: 13px; color: #999; margin-bottom: 12px; }
+
+.footer-socials {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.footer-socials a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #999;
+  transition: all 0.2s;
+}
+
+.footer-socials a:hover { background: var(--green); border-color: var(--green); color: #fff; }
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.footer-copy { font-size: 12px; color: #999; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links, .nav-right { display: none; }
+  nav { padding: 0 16px; height: 56px; }
+  .logo { font-size: 14px; padding: 6px 12px; margin-right: 0; }
+  .top-banner { font-size: 12px; padding: 8px 16px; }
+  .mobile-menu { top: 56px; }
+  .page-hero { padding: 50px 20px 40px; }
+  .page-hero h1 { font-size: 28px; }
+  .legal-content { padding: 0 20px 60px; }
+  .toc { margin: 0 20px 40px; padding: 24px 20px; }
+  .toc ol { columns: 1; }
+  footer { padding: 40px 20px 20px; }
+  .footer-inner { grid-template-columns: 1fr; text-align: center; }
+  .footer-contact { text-align: center; }
+  .footer-socials { justify-content: center; }
+  .footer-links { justify-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  <span class="apple-pay-icon">Pay</span>
+  Apple Pay is available on winusupercars!
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="site_home.html" class="logo">WINUSUPERCARS</a>
+  <div class="nav-links">
+    <a href="site_comment.html">How to play</a>
+    <a href="site_gagnants.html">Winners</a>
+    <a href="#">Feed</a>
+    <a href="site_faq.html">Faq</a>
+    <a href="site_mentions.html">About us</a>
+    <a href="#">Contact us</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-lang">English &#9662;</span>
+    <span class="nav-auth"><a href="#">Login</a> | <a href="#">Register</a></span>
+    <svg class="nav-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8"/><rect x="3" y="8" width="18" height="14" rx="2"/></svg>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="site_comment.html">How to play</a>
+  <a href="site_gagnants.html">Winners</a>
+  <a href="#">Feed</a>
+  <a href="site_faq.html">Faq</a>
+  <a href="site_mentions.html">About us</a>
+  <a href="#">Contact us</a>
+  <a href="#">Login</a>
+  <a href="#">Register</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <h1>Terms &amp; Conditions</h1>
+  <p>Please read these terms carefully before participating in any WIN U SUPERCARS competition.</p>
+  <div class="update-date">Last updated: January 1, 2026</div>
+</section>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>TABLE OF CONTENTS</h2>
+  <ol>
+    <li><a href="#article-1">Purpose</a></li>
+    <li><a href="#article-2">Company</a></li>
+    <li><a href="#article-3">Eligibility</a></li>
+    <li><a href="#article-4">Tickets &amp; Pricing</a></li>
+    <li><a href="#article-5">Draw Process</a></li>
+    <li><a href="#article-6">Winner Selection</a></li>
+    <li><a href="#article-7">Prize Delivery</a></li>
+    <li><a href="#article-8">Tax Responsibility</a></li>
+    <li><a href="#article-9">Intellectual Property</a></li>
+    <li><a href="#article-10">Personal Data</a></li>
+    <li><a href="#article-11">Limitation of Liability</a></li>
+    <li><a href="#article-12">Modification</a></li>
+    <li><a href="#article-13">Governing Law</a></li>
+    <li><a href="#article-14">Contact</a></li>
+  </ol>
+</div>
+
+<!-- ARTICLES -->
+<div class="legal-content">
+
+  <div class="article" id="article-1">
+    <div class="article-number">Article 01</div>
+    <h3>Purpose</h3>
+    <p>These Terms and Conditions ("Terms") govern the rules and procedures under which WIN U SUPERCARS LLC ("the Company") organizes promotional skill-based competitions offering participants the opportunity to win luxury supercars.</p>
+    <p>By participating in any competition organized by WIN U SUPERCARS, the participant acknowledges having read and accepted these Terms without reservation. Any participation implies full and unconditional acceptance of these conditions.</p>
+    <p>WIN U SUPERCARS organizes competitions on a regular basis, each offering the chance to win a luxury supercar, the make and model of which are announced in advance on the Company's website.</p>
+  </div>
+
+  <div class="article" id="article-2">
+    <div class="article-number">Article 02</div>
+    <h3>Company</h3>
+    <p>WIN U SUPERCARS LLC is a limited liability company organized and registered under the laws of the State of Florida, United States of America.</p>
+    <ul>
+      <li><strong>Legal name:</strong> WIN U SUPERCARS LLC</li>
+      <li><strong>Entity type:</strong> Limited Liability Company (LLC)</li>
+      <li><strong>Registered office:</strong> Miami, FL 33131, United States</li>
+      <li><strong>Contact email:</strong> <a href="mailto:contact@winusupercars.com">contact@winusupercars.com</a></li>
+      <li><strong>Website:</strong> www.winusupercars.com</li>
+    </ul>
+  </div>
+
+  <div class="article" id="article-3">
+    <div class="article-number">Article 03</div>
+    <h3>Eligibility</h3>
+    <p>Participation in competitions organized by WIN U SUPERCARS is subject to the following cumulative conditions:</p>
+    <ul>
+      <li><strong>Minimum age:</strong> The participant must be at least eighteen (18) years of age at the date of participation. Age verification may be required at any time and must be completed before any prize is awarded.</li>
+      <li><strong>Residence:</strong> The participant must reside in a jurisdiction where skill-based competitions are permitted under applicable law. Residents of jurisdictions where such competitions are prohibited or restricted are not eligible.</li>
+      <li><strong>User account:</strong> A personal account on the WIN U SUPERCARS platform is required. The participant must provide accurate and up-to-date information during registration.</li>
+      <li><strong>Single account:</strong> Each individual may hold only one account. The creation of multiple accounts will result in immediate disqualification and closure of all related accounts.</li>
+    </ul>
+    <p>WIN U SUPERCARS reserves the right to refuse or cancel any participation that does not comply with these conditions, without prior notice and without compensation.</p>
+  </div>
+
+  <div class="article" id="article-4">
+    <div class="article-number">Article 04</div>
+    <h3>Tickets &amp; Pricing</h3>
+    <p>Participation in competitions is through the purchase of digital tickets. Each ticket grants the participant one additional chance of being selected as the winner in the corresponding draw, provided the skill-based quiz question is answered correctly.</p>
+    <p>Tickets are offered in packs at the following prices:</p>
+    <ul>
+      <li><strong>Starter Pack:</strong> 5 tickets — $49</li>
+      <li><strong>Accelerator Pack:</strong> 15 tickets — $129</li>
+      <li><strong>Elite Pack:</strong> 50 tickets — $349</li>
+    </ul>
+    <p>Prices are displayed in US Dollars (USD). Applicable prices are those shown on the website at the time of purchase. WIN U SUPERCARS reserves the right to modify pricing at any time; changes will not affect previously completed purchases.</p>
+    <p><strong>No-refund policy:</strong> All ticket purchases are final and non-refundable. No refund requests will be accepted after payment confirmation. By purchasing tickets, the participant expressly waives any right of withdrawal in accordance with applicable consumer protection laws regarding fully performed digital services.</p>
+  </div>
+
+  <div class="article" id="article-5">
+    <div class="article-number">Article 05</div>
+    <h3>Draw Process</h3>
+    <p>WIN U SUPERCARS organizes draws following the close of each competition, at dates communicated in advance on the website and by email notification to registered participants.</p>
+    <p>The draw is conducted using a certified Random Number Generator (RNG) algorithm, ensuring fairness and transparency in the selection process. This algorithm is developed and audited by an independent technology provider.</p>
+    <p>Draw results are verified by an independent third party, whose compliance report is made available on the Company's website within forty-eight (48) hours of the draw. Each draw result is final and binding.</p>
+  </div>
+
+  <div class="article" id="article-6">
+    <div class="article-number">Article 06</div>
+    <h3>Winner Selection</h3>
+    <p>The winner is selected at random from among all valid tickets registered for the relevant competition. Only participants who correctly answered the skill-based quiz question are eligible for the draw. Each eligible ticket has an equal chance of being selected.</p>
+    <p><strong>Notification:</strong> The winner is notified within twenty-four (24) hours of the draw, by email to the address associated with their user account and by platform notification.</p>
+    <p><strong>Identity verification:</strong> The winner must provide a valid government-issued photo ID (passport or driver's license) and proof of address dated within the last three (3) months to confirm eligibility.</p>
+    <p><strong>Response deadline:</strong> The winner has seventy-two (72) hours from notification to confirm acceptance of the prize and provide the required documents. If no response is received or documents are non-compliant within this period, the prize is forfeited and a replacement draw is conducted within seven (7) business days.</p>
+  </div>
+
+  <div class="article" id="article-7">
+    <div class="article-number">Article 07</div>
+    <h3>Prize Delivery</h3>
+    <p>The winner may choose between two options for receiving their prize:</p>
+    <p><strong>Option A — Vehicle:</strong></p>
+    <ul>
+      <li>Delivery of the vehicle within seven (7) business days of final verification of the winner's documentation.</li>
+      <li>Title transfer is completed in the winner's name. Transfer fees are borne by WIN U SUPERCARS.</li>
+      <li>Transportation and delivery costs are covered by the Company for deliveries within the continental United States. Additional fees may apply for deliveries outside the continental US.</li>
+    </ul>
+    <p><strong>Option B — Cash alternative:</strong></p>
+    <ul>
+      <li>The winner may opt to receive eighty percent (80%) of the estimated retail value of the vehicle at the time of the draw.</li>
+      <li>Payment is made by bank transfer within fourteen (14) business days of receiving the winner's banking details.</li>
+      <li>The choice between Option A and Option B is irrevocable and must be communicated within the seventy-two (72) hour deadline specified in Article 6.</li>
+    </ul>
+  </div>
+
+  <div class="article" id="article-8">
+    <div class="article-number">Article 08</div>
+    <h3>Tax Responsibility</h3>
+    <p>The winner is solely and entirely responsible for all taxes, duties, and fiscal contributions applicable to the prize received, whether the vehicle or the cash alternative, in accordance with federal, state, and local tax laws.</p>
+    <p>For US-resident winners, WIN U SUPERCARS will issue a <strong>Form 1099-MISC</strong> to the Internal Revenue Service (IRS) for any prize whose value exceeds six hundred dollars ($600), in compliance with federal reporting obligations.</p>
+    <p>WIN U SUPERCARS shall not be held responsible for the winner's failure to comply with their tax obligations. Winners are strongly advised to consult a qualified tax professional to determine the tax implications of their prize.</p>
+  </div>
+
+  <div class="article" id="article-9">
+    <div class="article-number">Article 09</div>
+    <h3>Intellectual Property</h3>
+    <p>All elements comprising the WIN U SUPERCARS website and platform — including but not limited to trademarks, logos, trade names, text, images, photographs, illustrations, videos, sounds, software, databases, and site architecture — are the exclusive property of WIN U SUPERCARS LLC or its licensed partners and are protected by US and international intellectual property laws.</p>
+    <p>Any reproduction, representation, modification, distribution, or exploitation, in whole or in part, of these elements, by any means and on any medium, without the prior written authorization of WIN U SUPERCARS LLC, is strictly prohibited and constitutes infringement.</p>
+    <p>Vehicle brand names displayed on the site belong to their respective owners. Their use by WIN U SUPERCARS does not imply any affiliation, partnership, or endorsement by those brands.</p>
+  </div>
+
+  <div class="article" id="article-10">
+    <div class="article-number">Article 10</div>
+    <h3>Personal Data</h3>
+    <p>WIN U SUPERCARS is committed to protecting user privacy and processing personal data in compliance with applicable legislation, including the <strong>California Consumer Privacy Act (CCPA)</strong>.</p>
+    <p><strong>Data collected:</strong> The Company collects only data strictly necessary for managing participation, communicating with users, and awarding prizes: name, email address, date of birth, state of residence, and, where applicable, mailing address and banking details of the winner.</p>
+    <p><strong>Data security:</strong> Personal data is stored on secure servers and encrypted using industry-standard AES-256 encryption. Access to data is limited to strictly authorized personnel.</p>
+    <p><strong>No third-party sharing:</strong> WIN U SUPERCARS will never sell, rent, or transfer users' personal data to third parties for commercial or advertising purposes. Data is shared with third parties only to the extent strictly necessary for service delivery (payment processors, shipping providers) and subject to adequate confidentiality safeguards.</p>
+    <p><strong>User rights:</strong> Under the CCPA, users have the right to access, correct, delete, and port their personal data. These rights may be exercised at any time by contacting the Company at <a href="mailto:privacy@winusupercars.com">privacy@winusupercars.com</a>.</p>
+  </div>
+
+  <div class="article" id="article-11">
+    <div class="article-number">Article 11</div>
+    <h3>Limitation of Liability</h3>
+    <p>WIN U SUPERCARS LLC shall not be liable for indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, use, goodwill, or other intangible losses, resulting from or related to the use or inability to use the platform's services.</p>
+    <p>The total liability of WIN U SUPERCARS, for all causes combined, is limited to the total amount actually paid by the participant during the twelve (12) months preceding the event giving rise to the claim.</p>
+    <p>WIN U SUPERCARS shall not be held liable in cases of force majeure, service interruption, technical failure, computer error, hacking, or any event beyond its control that may affect the proper conduct of draws or access to the platform.</p>
+    <p>The Company reserves the right to cancel, postpone, or modify the terms of a competition in exceptional circumstances, without this giving rise to any compensation for participants.</p>
+  </div>
+
+  <div class="article" id="article-12">
+    <div class="article-number">Article 12</div>
+    <h3>Modification</h3>
+    <p>WIN U SUPERCARS reserves the right to modify these Terms and Conditions at any time, including to adapt them to legislative, regulatory, or commercial developments.</p>
+    <p>Participants will be notified of any material modification by email to the address associated with their user account, at least thirty (30) days before the new terms take effect.</p>
+    <p>The version of the Terms applicable to a participant is the one in effect at the date of ticket purchase. Any subsequent participation after notification of a modification constitutes acceptance of the new terms.</p>
+  </div>
+
+  <div class="article" id="article-13">
+    <div class="article-number">Article 13</div>
+    <h3>Governing Law</h3>
+    <p>These Terms and Conditions are governed by and construed in accordance with the laws of the State of Florida, United States of America, without regard to its conflict of law provisions.</p>
+    <p>Any dispute relating to the validity, interpretation, performance, or termination of these Terms shall be subject to the exclusive jurisdiction of the courts of <strong>Miami-Dade County, Florida</strong>, except where mandatory legal provisions designate another jurisdiction.</p>
+    <p>Prior to any legal action, the parties agree to seek an amicable resolution of the dispute. Any claim must be submitted in writing to WIN U SUPERCARS customer service, which undertakes to respond within thirty (30) days.</p>
+  </div>
+
+  <div class="article" id="article-14">
+    <div class="article-number">Article 14</div>
+    <h3>Contact</h3>
+    <p>For any questions regarding these Terms and Conditions, competitions, or your personal data, you may contact our team:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:contact@winusupercars.com">contact@winusupercars.com</a></li>
+      <li><strong>Company:</strong> WIN U SUPERCARS LLC</li>
+      <li><strong>Address:</strong> Miami, FL 33131, United States</li>
+    </ul>
+    <p>Our team is committed to processing your request within forty-eight (48) business hours.</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">WINUSUPERCARS</div>
+      <p class="footer-tagline">Premium supercar competitions.<br>Based in Miami, FL.</p>
+    </div>
+    <div class="footer-links">
+      <a href="site_home.html">Home</a>
+      <a href="site_tirage.html">Competitions</a>
+      <a href="site_gagnants.html">Winners</a>
+      <a href="site_comment.html">How It Works</a>
+      <a href="site_faq.html">FAQ</a>
+      <a href="site_cgv.html">T&C</a>
+      <a href="site_mentions.html">Legal</a>
+      <a href="#">Contact us</a>
+    </div>
+    <div class="footer-contact">
+      <div class="footer-email">contact@winusupercars.com</div>
+      <div class="footer-socials">
+        <a href="#">IG</a>
+        <a href="#">TW</a>
+        <a href="#">FB</a>
+        <a href="#">YT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 WIN U SUPERCARS — Miami, FL. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const h = document.getElementById('hamburger');
+  const m = document.getElementById('mobileMenu');
+  h.addEventListener('click', function() {
+    h.classList.toggle('active');
+    m.classList.toggle('active');
+    document.body.style.overflow = m.classList.contains('active') ? 'hidden' : '';
+  });
+  m.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      h.classList.remove('active');
+      m.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

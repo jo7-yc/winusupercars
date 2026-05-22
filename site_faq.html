@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — WIN U SUPERCARS</title>
+<!-- Helvetica Neue (system font, no import needed) -->
+<style>
+:root {
+  --bg: #FFFFFF;
+  --text: #111111;
+  --text-muted: #888888;
+  --green: #114F33;
+  --green-light: #005128;
+  --green-bright: #22c55e;
+  --border: #E5E5E5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ── TOP BANNER ── */
+.top-banner {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.top-banner .apple-pay-icon {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 86px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  background: var(--green);
+  color: #fff;
+  padding: 8px 14px;
+  margin-right: 40px;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+}
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover { color: var(--green); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.nav-lang { font-size: 14px; font-weight: 500; color: var(--green); cursor: pointer; }
+.nav-auth { font-size: 14px; font-weight: 500; color: var(--text); }
+.nav-auth a { transition: color 0.2s; }
+.nav-auth a:hover { color: var(--green); }
+.nav-cart { width: 20px; height: 20px; cursor: pointer; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1002;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  transition: all 0.3s;
+}
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 86px;
+  left: 0; right: 0; bottom: 0;
+  background: #fff;
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.mobile-menu.active { display: flex; }
+.mobile-menu a { font-size: 18px; font-weight: 600; color: var(--text); }
+.mobile-menu a:hover { color: var(--green); }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  padding: 80px 48px 60px;
+  text-align: center;
+  background: var(--bg);
+}
+
+.page-hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.page-hero p {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── FAQ SECTION ── */
+.faq-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 48px 80px;
+}
+
+.faq-category {
+  margin-bottom: 48px;
+}
+
+.faq-category-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--green);
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--green);
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item summary {
+  padding: 20px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: '+';
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text-muted);
+  transition: transform 0.3s;
+}
+
+.faq-item[open] summary::after {
+  content: '−';
+  color: var(--green);
+}
+
+.faq-answer {
+  padding: 0 0 20px;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.8;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── CONTACT CTA ── */
+.contact-cta {
+  text-align: center;
+  padding: 80px 48px;
+  background: #f8f8f8;
+}
+
+.contact-cta h2 {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.contact-cta p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 32px;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 16px 40px;
+  background: var(--green);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.cta-btn:hover { background: var(--green-light); }
+
+/* ── FOOTER ── */
+footer {
+  background: #fff;
+  border-top: 1px solid #eee;
+  padding: 60px 48px 32px;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 48px;
+}
+
+.footer-logo {
+  font-size: 16px;
+  font-weight: 900;
+  background: var(--green);
+  color: #fff;
+  padding: 6px 12px;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.footer-tagline { font-size: 13px; color: #999; line-height: 1.6; }
+
+.footer-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 40px;
+}
+
+.footer-links a { font-size: 14px; font-weight: 500; color: #555; transition: color 0.2s; }
+.footer-links a:hover { color: var(--green); }
+
+.footer-contact { text-align: right; }
+.footer-email { font-size: 13px; color: #999; margin-bottom: 12px; }
+
+.footer-socials {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.footer-socials a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #999;
+  transition: all 0.2s;
+}
+
+.footer-socials a:hover { background: var(--green); border-color: var(--green); color: #fff; }
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.footer-copy { font-size: 12px; color: #999; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links, .nav-right { display: none; }
+  nav { padding: 0 16px; height: 56px; }
+  .logo { font-size: 14px; padding: 6px 12px; margin-right: 0; }
+  .top-banner { font-size: 12px; padding: 8px 16px; }
+  .mobile-menu { top: 56px; }
+  .page-hero { padding: 50px 20px 40px; }
+  .page-hero h1 { font-size: 28px; }
+  .faq-section { padding: 0 20px 60px; }
+  .contact-cta { padding: 50px 20px; }
+  footer { padding: 40px 20px 20px; }
+  .footer-inner { grid-template-columns: 1fr; text-align: center; }
+  .footer-contact { text-align: center; }
+  .footer-socials { justify-content: center; }
+  .footer-links { justify-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  <span class="apple-pay-icon">Pay</span>
+  Apple Pay is available on winusupercars!
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="site_home.html" class="logo">WINUSUPERCARS</a>
+  <div class="nav-links">
+    <a href="site_comment.html">How to play</a>
+    <a href="site_gagnants.html">Winners</a>
+    <a href="#">Feed</a>
+    <a href="site_faq.html">Faq</a>
+    <a href="site_mentions.html">About us</a>
+    <a href="#">Contact us</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-lang">English &#9662;</span>
+    <span class="nav-auth"><a href="#">Login</a> | <a href="#">Register</a></span>
+    <svg class="nav-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8"/><rect x="3" y="8" width="18" height="14" rx="2"/></svg>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="site_comment.html">How to play</a>
+  <a href="site_gagnants.html">Winners</a>
+  <a href="#">Feed</a>
+  <a href="site_faq.html">Faq</a>
+  <a href="site_mentions.html">About us</a>
+  <a href="#">Contact us</a>
+  <a href="#">Login</a>
+  <a href="#">Register</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <h1>Frequently Asked Questions</h1>
+  <p>Find answers to the most common questions about our competitions, prizes, and how it all works.</p>
+</section>
+
+<!-- FAQ -->
+<div class="faq-section">
+
+  <div class="faq-category">
+    <div class="faq-category-title">PARTICIPATION</div>
+    <details class="faq-item">
+      <summary>How do I enter?</summary>
+      <div class="faq-answer">It's simple. Visit our Competitions page, select the supercar you want to win, choose your ticket pack, answer the skill-based quiz question, and complete your secure payment. You're in the draw as soon as your payment is confirmed.</div>
+    </details>
+    <details class="faq-item">
+      <summary>How much does a ticket cost?</summary>
+      <div class="faq-answer">Tickets start at just $49 for a 5-ticket pack. We also offer a 15-ticket pack at $129 and a 50-ticket pack at $349. The more tickets you buy, the lower the cost per ticket and the higher your chances of winning.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Can I buy multiple packs?</summary>
+      <div class="faq-answer">Yes. You can purchase as many packs as you like, up to a maximum of 50 tickets per person per competition. This limit ensures fairness for all participants.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Is there an age limit?</summary>
+      <div class="faq-answer">Yes, you must be at least 18 years old to participate. Age verification may be required before any prize is awarded. You must also reside in a jurisdiction where skill-based competitions are permitted under local law.</div>
+    </details>
+  </div>
+
+  <div class="faq-category">
+    <div class="faq-category-title">DRAW</div>
+    <details class="faq-item">
+      <summary>How is the winner selected?</summary>
+      <div class="faq-answer">The winner is selected using a certified third-party Random Number Generator (RNG). Only participants who correctly answered the skill-based quiz question are eligible. The RNG is independently audited and compliant with industry standards to ensure complete impartiality.</div>
+    </details>
+    <details class="faq-item">
+      <summary>When do draws take place?</summary>
+      <div class="faq-answer">Each competition has a closing date published on the Competitions page. The draw takes place within 48 hours of the competition closing or once all tickets are sold, whichever comes first. Exact draw dates are announced 7 days in advance via email and on our social media channels.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Is the draw truly random?</summary>
+      <div class="faq-answer">Absolutely. Our RNG provider is independently certified and audited. Every eligible ticket has an equal chance of being selected. Draw results are verified by an independent third party and published on our Winners page within 48 hours.</div>
+    </details>
+  </div>
+
+  <div class="faq-category">
+    <div class="faq-category-title">PRIZES</div>
+    <details class="faq-item">
+      <summary>What happens if I win?</summary>
+      <div class="faq-answer">You will be contacted within 24 hours of the draw via the email address linked to your account. You'll need to verify your identity with a valid government-issued ID and proof of address. You then choose between receiving the car (Option A) or the cash alternative at 80% of the car's retail value (Option B). Your choice is final and must be communicated within 72 hours.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Is delivery included?</summary>
+      <div class="faq-answer">Yes. If you choose Option A, we deliver the supercar to your door anywhere in the continental United States at no extra cost. Title transfer and registration assistance are included. For locations outside the continental US, additional shipping fees may apply.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Do I have to pay taxes?</summary>
+      <div class="faq-answer">Yes, the winner is solely responsible for all applicable federal, state, and local taxes on the prize. For US residents, WIN U SUPERCARS will issue a Form 1099-MISC to the IRS for any prize valued over $600. We strongly recommend consulting a tax professional to understand the tax implications of your winnings.</div>
+    </details>
+  </div>
+
+  <div class="faq-category">
+    <div class="faq-category-title">SECURITY &amp; LEGAL</div>
+    <details class="faq-item">
+      <summary>Is WIN U SUPERCARS legal?</summary>
+      <div class="faq-answer">Yes. WIN U SUPERCARS LLC is a legally registered company in the State of Florida. Our competitions are structured as skill-based contests, which are legal under federal law and the laws of the State of Florida. Participants must correctly answer a quiz question to be eligible for the draw, which distinguishes our competitions from games of pure chance.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Is my data protected?</summary>
+      <div class="faq-answer">Your personal data is encrypted using AES-256 encryption and stored on secure servers. We comply with the California Consumer Privacy Act (CCPA) and never sell, rent, or share your personal information with third parties for commercial purposes. Payments are processed securely through our payment partner.</div>
+    </details>
+    <details class="faq-item">
+      <summary>How do I contact support?</summary>
+      <div class="faq-answer">You can reach our support team at contact@winusupercars.com. We respond to all inquiries within 48 business hours. For privacy-related requests, please write to privacy@winusupercars.com.</div>
+    </details>
+  </div>
+
+</div>
+
+<!-- CONTACT CTA -->
+<section class="contact-cta">
+  <h2>Still have questions?</h2>
+  <p>Our team is available 7 days a week to help you.</p>
+  <a href="mailto:contact@winusupercars.com" class="cta-btn">Contact us</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">WINUSUPERCARS</div>
+      <p class="footer-tagline">Premium supercar competitions.<br>Based in Miami, FL.</p>
+    </div>
+    <div class="footer-links">
+      <a href="site_home.html">Home</a>
+      <a href="site_tirage.html">Competitions</a>
+      <a href="site_gagnants.html">Winners</a>
+      <a href="site_comment.html">How It Works</a>
+      <a href="site_faq.html">FAQ</a>
+      <a href="site_cgv.html">T&C</a>
+      <a href="site_mentions.html">Legal</a>
+      <a href="#">Contact us</a>
+    </div>
+    <div class="footer-contact">
+      <div class="footer-email">contact@winusupercars.com</div>
+      <div class="footer-socials">
+        <a href="#">IG</a>
+        <a href="#">TW</a>
+        <a href="#">FB</a>
+        <a href="#">YT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 WIN U SUPERCARS — Miami, FL. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const h = document.getElementById('hamburger');
+  const m = document.getElementById('mobileMenu');
+  h.addEventListener('click', function() {
+    h.classList.toggle('active');
+    m.classList.toggle('active');
+    document.body.style.overflow = m.classList.contains('active') ? 'hidden' : '';
+  });
+  m.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      h.classList.remove('active');
+      m.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal Notice — WIN U SUPERCARS</title>
+<style>
+:root {
+  --bg: #FFFFFF;
+  --text: #111111;
+  --text-muted: #888888;
+  --green: #114F33;
+  --green-light: #005128;
+  --green-bright: #22c55e;
+  --border: #E5E5E5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ── TOP BANNER ── */
+.top-banner {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.top-banner .apple-pay-icon {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 86px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  background: var(--green);
+  color: #fff;
+  padding: 8px 14px;
+  margin-right: 40px;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+}
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover { color: var(--green); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.nav-lang { font-size: 14px; font-weight: 500; color: var(--green); cursor: pointer; }
+.nav-auth { font-size: 14px; font-weight: 500; color: var(--text); }
+.nav-auth a { transition: color 0.2s; }
+.nav-auth a:hover { color: var(--green); }
+.nav-cart { width: 20px; height: 20px; cursor: pointer; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1002;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  transition: all 0.3s;
+}
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 86px;
+  left: 0; right: 0; bottom: 0;
+  background: #fff;
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.mobile-menu.active { display: flex; }
+.mobile-menu a { font-size: 18px; font-weight: 600; color: var(--text); }
+.mobile-menu a:hover { color: var(--green); }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  padding: 80px 48px 60px;
+  text-align: center;
+  background: var(--bg);
+}
+
+.page-hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.page-hero p {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── LEGAL SECTIONS ── */
+.legal-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 48px 80px;
+}
+
+.legal-section {
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.legal-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.legal-section h2 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green);
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--green);
+  margin-bottom: 20px;
+}
+
+.legal-section p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.legal-section p:last-child { margin-bottom: 0; }
+
+.legal-section strong {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.legal-section a {
+  color: var(--green);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.legal-section a:hover {
+  border-bottom-color: var(--green);
+}
+
+/* ── CONTACT CTA ── */
+.contact-cta {
+  text-align: center;
+  padding: 80px 48px;
+  background: #f8f8f8;
+}
+
+.contact-cta h2 {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.contact-cta p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 32px;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 16px 40px;
+  background: var(--green);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.cta-btn:hover { background: var(--green-light); }
+
+/* ── FOOTER ── */
+footer {
+  background: #fff;
+  border-top: 1px solid #eee;
+  padding: 60px 48px 32px;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 48px;
+}
+
+.footer-logo {
+  font-size: 16px;
+  font-weight: 900;
+  background: var(--green);
+  color: #fff;
+  padding: 6px 12px;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.footer-tagline { font-size: 13px; color: #999; line-height: 1.6; }
+
+.footer-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 40px;
+}
+
+.footer-links a { font-size: 14px; font-weight: 500; color: #555; transition: color 0.2s; }
+.footer-links a:hover { color: var(--green); }
+
+.footer-contact { text-align: right; }
+.footer-email { font-size: 13px; color: #999; margin-bottom: 12px; }
+
+.footer-socials {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.footer-socials a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #999;
+  transition: all 0.2s;
+}
+
+.footer-socials a:hover { background: var(--green); border-color: var(--green); color: #fff; }
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.footer-copy { font-size: 12px; color: #999; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links, .nav-right { display: none; }
+  nav { padding: 0 16px; height: 56px; }
+  .logo { font-size: 14px; padding: 6px 12px; margin-right: 0; }
+  .top-banner { font-size: 12px; padding: 8px 16px; }
+  .mobile-menu { top: 56px; }
+  .page-hero { padding: 50px 20px 40px; }
+  .page-hero h1 { font-size: 28px; }
+  .legal-content { padding: 0 20px 60px; }
+  .contact-cta { padding: 50px 20px; }
+  footer { padding: 40px 20px 20px; }
+  .footer-inner { grid-template-columns: 1fr; text-align: center; }
+  .footer-contact { text-align: center; }
+  .footer-socials { justify-content: center; }
+  .footer-links { justify-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  <span class="apple-pay-icon">Pay</span>
+  Apple Pay is available on winusupercars!
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="site_home.html" class="logo">WINUSUPERCARS</a>
+  <div class="nav-links">
+    <a href="site_comment.html">How to play</a>
+    <a href="site_gagnants.html">Winners</a>
+    <a href="#">Feed</a>
+    <a href="site_faq.html">Faq</a>
+    <a href="site_mentions.html">About us</a>
+    <a href="#">Contact us</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-lang">English &#9662;</span>
+    <span class="nav-auth"><a href="#">Login</a> | <a href="#">Register</a></span>
+    <svg class="nav-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8"/><rect x="3" y="8" width="18" height="14" rx="2"/></svg>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="site_comment.html">How to play</a>
+  <a href="site_gagnants.html">Winners</a>
+  <a href="#">Feed</a>
+  <a href="site_faq.html">Faq</a>
+  <a href="site_mentions.html">About us</a>
+  <a href="#">Contact us</a>
+  <a href="#">Login</a>
+  <a href="#">Register</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <h1>Legal Notice</h1>
+  <p>Important legal information about WIN U SUPERCARS and this website.</p>
+</section>
+
+<!-- LEGAL CONTENT -->
+<div class="legal-content">
+
+  <div class="legal-section">
+    <h2>SITE PUBLISHER</h2>
+    <p><strong>WIN U SUPERCARS LLC</strong>, a limited liability company organized under the laws of the State of Florida, United States of America.</p>
+    <p><strong>Registered office:</strong> Miami, FL 33131, United States</p>
+    <p><strong>Email:</strong> <a href="mailto:contact@winusupercars.com">contact@winusupercars.com</a></p>
+    <p><strong>Director of Publication:</strong> Jordan Zeitoun</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>HOSTING</h2>
+    <p>This website is hosted by Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, United States. For more information, please contact the hosting provider directly.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>INTELLECTUAL PROPERTY</h2>
+    <p>All content on the WIN U SUPERCARS website, including but not limited to text, images, logos, videos, graphics, icons, and audio elements, is protected by intellectual property law.</p>
+    <p>Any reproduction, representation, modification, publication, adaptation, or exploitation, in whole or in part, of this content, by any means whatsoever, without the prior written authorization of WIN U SUPERCARS LLC, is strictly prohibited and constitutes infringement punishable by law.</p>
+    <p>Vehicle brand names and logos displayed on the website are the property of their respective owners and are used solely for identification purposes. Their presence does not imply any affiliation, partnership, or endorsement.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>PERSONAL DATA</h2>
+    <p>In accordance with the <strong>California Consumer Privacy Act (CCPA)</strong>, you have the right to access, correct, and delete your personal data collected through this website.</p>
+    <p>You may exercise these rights at any time by contacting us at: <a href="mailto:privacy@winusupercars.com">privacy@winusupercars.com</a></p>
+    <p>WIN U SUPERCARS does not sell, rent, or share your personal information with third parties for commercial purposes. Data is processed solely for the purposes of managing competitions, communicating with participants, and delivering prizes.</p>
+    <p>For more information about how we handle your data, please refer to our Terms and Conditions (Article 10 — Personal Data).</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>COOKIES</h2>
+    <p>The WIN U SUPERCARS website uses cookies strictly necessary for the proper functioning of the site, as well as analytics cookies subject to your prior consent.</p>
+    <p>You may manage your cookie preferences at any time through your browser settings. Disabling certain cookies may affect your browsing experience.</p>
+    <p>We do not use third-party advertising cookies. Analytics data is collected in anonymized form and is used solely to improve the user experience.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>LIABILITY</h2>
+    <p>WIN U SUPERCARS endeavors to provide accurate and up-to-date information on this website. However, the Company cannot guarantee the accuracy, completeness, or absence of errors in the information published.</p>
+    <p>Hyperlinks on this website leading to third-party sites are provided for informational purposes only. WIN U SUPERCARS disclaims any responsibility for the content of external websites and shall not be held liable for any direct or indirect damages resulting from their use.</p>
+    <p>WIN U SUPERCARS shall not be held liable for any interruption of service, technical failure, or damage resulting from the use of or inability to access the website, whether due to maintenance, technical issues, or circumstances beyond the Company's control.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>GOVERNING LAW</h2>
+    <p>This website and all legal notices are governed by the laws of the State of Florida, United States of America. In the event of a dispute, and in the absence of amicable resolution, the competent courts of the State of Florida shall have exclusive jurisdiction.</p>
+    <p>Any claims or disputes arising from the use of this website or its content shall be submitted to the courts of <strong>Miami-Dade County, Florida</strong>.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>CONTACT</h2>
+    <p>For any questions regarding this legal notice or the operation of the website, you may contact us at:</p>
+    <p><a href="mailto:contact@winusupercars.com">contact@winusupercars.com</a></p>
+    <p><strong>WIN U SUPERCARS LLC</strong><br>Miami, FL 33131, United States</p>
+  </div>
+
+</div>
+
+<!-- CONTACT CTA -->
+<section class="contact-cta">
+  <h2>Need more information?</h2>
+  <p>Our team is available to answer any questions.</p>
+  <a href="mailto:contact@winusupercars.com" class="cta-btn">Contact us</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">WINUSUPERCARS</div>
+      <p class="footer-tagline">Premium supercar competitions.<br>Based in Miami, FL.</p>
+    </div>
+    <div class="footer-links">
+      <a href="site_home.html">Home</a>
+      <a href="site_tirage.html">Competitions</a>
+      <a href="site_gagnants.html">Winners</a>
+      <a href="site_comment.html">How It Works</a>
+      <a href="site_faq.html">FAQ</a>
+      <a href="site_cgv.html">T&C</a>
+      <a href="site_mentions.html">Legal</a>
+      <a href="#">Contact us</a>
+    </div>
+    <div class="footer-contact">
+      <div class="footer-email">contact@winusupercars.com</div>
+      <div class="footer-socials">
+        <a href="#">IG</a>
+        <a href="#">TW</a>
+        <a href="#">FB</a>
+        <a href="#">YT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 WIN U SUPERCARS — Miami, FL. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const h = document.getElementById('hamburger');
+  const m = document.getElementById('mobileMenu');
+  h.addEventListener('click', function() {
+    h.classList.toggle('active');
+    m.classList.toggle('active');
+    document.body.style.overflow = m.classList.contains('active') ? 'hidden' : '';
+  });
+  m.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      h.classList.remove('active');
+      m.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
