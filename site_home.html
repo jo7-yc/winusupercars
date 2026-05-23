@@ -442,146 +442,19 @@ nav {
 .t-pack-save.green { color: var(--green); }
 .t-pack-save.amber { color: var(--amber); }
 
-/* ── PRODUCT CARDS (for other competitions) ── */
-.cards-section {
-  padding: 48px 24px;
-  max-width: 1400px;
-  margin: 0 auto;
+/* ── COMPETITION BLOCKS (same layout as hero) ── */
+.comp-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0;
 }
 
-.cards-section-title {
-  font-size: 10px;
-  letter-spacing: 4px;
-  color: var(--text-hint);
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 24px;
-}
+.comp-block.sold-out { opacity: 0.5; }
+.comp-block.sold-out .car-visual-inner img { filter: grayscale(0.5) brightness(0.7); }
+.comp-block.sold-out .btn-get-ticket { background: #333; cursor: default; }
+.comp-block.sold-out .btn-get-ticket:hover { background: #333; }
 
-.cards-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.p-card {
-  background: var(--bg-card);
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: border-color 0.3s;
-}
-
-.p-card:hover { border-color: var(--border-light); }
-
-.p-card img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  display: block;
-}
-
-.p-card-body {
-  padding: 18px;
-}
-
-.p-card-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.p-card-sub {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-bottom: 14px;
-}
-
-.p-card-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-}
-
-.p-card-gauge {
-  position: relative;
-  width: 48px;
-  height: 48px;
-}
-
-.p-card-gauge svg { width: 48px; height: 48px; }
-
-.p-card-gauge-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--green);
-}
-
-.p-card-stats {
-  display: flex;
-  gap: 16px;
-}
-
-.p-card-stat-label {
-  font-size: 10px;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.p-card-stat-value {
-  font-size: 15px;
-  font-weight: 600;
-  margin-top: 1px;
-}
-
-.p-card-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
-}
-
-.p-card-countdown {
-  display: flex;
-  gap: 6px;
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-.p-card-countdown span {
-  background: rgba(255,255,255,0.05);
-  padding: 3px 6px;
-  border-radius: 4px;
-  font-weight: 500;
-  color: var(--text);
-  font-variant-numeric: tabular-nums;
-}
-
-.p-card-btn {
-  background: var(--green);
-  color: #000;
-  padding: 8px 18px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 13px;
-  transition: background 0.2s;
-}
-
-.p-card-btn:hover { background: var(--green-dark); }
-
-/* SOLD OUT */
-.p-card.sold-out { opacity: 0.6; }
-.p-card.sold-out img { filter: grayscale(0.4); }
-
-.sold-badge {
+.sold-badge-inline {
   display: inline-block;
   background: var(--red);
   color: #fff;
@@ -591,12 +464,6 @@ nav {
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-
-.p-card.sold-out .p-card-btn {
-  background: #333;
-  cursor: default;
 }
 
 /* ── STATS BAR (only on homepage) ── */
@@ -964,7 +831,6 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
-  .cards-grid { grid-template-columns: 1fr; }
   .how-steps { flex-wrap: wrap; }
   .how-step { flex: 1 1 45%; }
   .footer-inner { grid-template-columns: 1fr; text-align: center; }
@@ -1004,9 +870,7 @@ footer {
   .ticket-packs { flex-wrap: wrap; }
   .t-pack { flex: 1 1 45%; }
 
-  .cards-section { padding: 32px 16px; }
-  .p-card img { height: 200px; }
-  .p-card-stats { gap: 12px; }
+  .comp-block .car-visual-inner img { height: 200px; }
 
   .mission { padding: 50px 20px; }
   .mission-title { font-size: 26px; }
@@ -1033,7 +897,6 @@ footer {
   .hero-title { font-size: 20px; }
   .cd-val { font-size: 18px; }
   .cd-block { min-width: 48px; padding: 6px 8px; }
-  .p-card-row { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
 </style>
 </head>
@@ -1181,122 +1044,270 @@ footer {
   </div>
 </div>
 
-<!-- MORE COMPETITIONS -->
-<section class="cards-section">
-  <p class="cards-section-title">More competitions</p>
-  <div class="cards-grid">
-
-    <!-- Card 1 -->
-    <div class="p-card">
-      <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&q=80" alt="Porsche 911 GT3">
-      <div class="p-card-body">
-        <h3 class="p-card-title">Porsche 911 GT3</h3>
-        <p class="p-card-sub">$197,000 value — or $120,000 cash</p>
-        <div class="p-card-row">
-          <div class="p-card-gauge">
-            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="#1a1a2e" stroke-width="4"/><circle cx="24" cy="24" r="20" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="50.26" style="transform:rotate(-90deg);transform-origin:center;"/></svg>
-            <span class="p-card-gauge-text">60%</span>
-          </div>
-          <div class="p-card-stats">
-            <div><div class="p-card-stat-label">Tickets</div><div class="p-card-stat-value">1,500 / 2,499</div></div>
-            <div><div class="p-card-stat-label">Odds</div><div class="p-card-stat-value">1 in 2,499</div></div>
-            <div><div class="p-card-stat-label">Entry</div><div class="p-card-stat-value">$129</div></div>
-          </div>
-        </div>
-        <div class="p-card-bottom">
-          <div class="p-card-countdown">
-            <span data-unit="days">12</span>d
-            <span data-unit="hours">08</span>h
-            <span data-unit="min">33</span>m
-          </div>
-          <a href="site_tirage.html" class="p-card-btn">Enter →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="p-card">
-      <img src="https://images.unsplash.com/photo-1616411501431-330ddc944cad?w=800&q=80" alt="Ferrari 488 GTB">
-      <div class="p-card-body">
-        <h3 class="p-card-title">Ferrari 488 GTB</h3>
-        <p class="p-card-sub">$285,000 value — win 2 supercars!</p>
-        <div class="p-card-row">
-          <div class="p-card-gauge">
-            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="#1a1a2e" stroke-width="4"/><circle cx="24" cy="24" r="20" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="62.83" style="transform:rotate(-90deg);transform-origin:center;"/></svg>
-            <span class="p-card-gauge-text">50%</span>
-          </div>
-          <div class="p-card-stats">
-            <div><div class="p-card-stat-label">Tickets</div><div class="p-card-stat-value">1,450 / 2,900</div></div>
-            <div><div class="p-card-stat-label">Odds</div><div class="p-card-stat-value">1 in 2,900</div></div>
-            <div><div class="p-card-stat-label">Entry</div><div class="p-card-stat-value">$199</div></div>
-          </div>
-        </div>
-        <div class="p-card-bottom">
-          <div class="p-card-countdown">
-            <span data-unit="days">12</span>d
-            <span data-unit="hours">08</span>h
-            <span data-unit="min">33</span>m
-          </div>
-          <a href="site_tirage.html" class="p-card-btn">Enter →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="p-card">
-      <img src="https://images.unsplash.com/photo-1638730558978-18941cc086ad?w=800&q=80" alt="McLaren 720S">
-      <div class="p-card-body">
-        <h3 class="p-card-title">McLaren 720S Spider</h3>
-        <p class="p-card-sub">$299,000 value — only 770 tickets!</p>
-        <div class="p-card-row">
-          <div class="p-card-gauge">
-            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="#1a1a2e" stroke-width="4"/><circle cx="24" cy="24" r="20" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="87.96" style="transform:rotate(-90deg);transform-origin:center;"/></svg>
-            <span class="p-card-gauge-text">30%</span>
-          </div>
-          <div class="p-card-stats">
-            <div><div class="p-card-stat-label">Tickets</div><div class="p-card-stat-value">231 / 770</div></div>
-            <div><div class="p-card-stat-label">Odds</div><div class="p-card-stat-value">1 in 770</div></div>
-            <div><div class="p-card-stat-label">Entry</div><div class="p-card-stat-value">$249</div></div>
-          </div>
-        </div>
-        <div class="p-card-bottom">
-          <div class="p-card-countdown">
-            <span data-unit="days">12</span>d
-            <span data-unit="hours">08</span>h
-            <span data-unit="min">33</span>m
-          </div>
-          <a href="site_tirage.html" class="p-card-btn">Enter →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 4 — SOLD OUT -->
-    <div class="p-card sold-out">
-      <img src="https://images.unsplash.com/photo-1617650728468-8581e439c864?w=800&q=80" alt="Lamborghini Aventador SVJ">
-      <div class="p-card-body">
-        <div class="sold-badge">Sold out</div>
-        <h3 class="p-card-title">Lamborghini Aventador SVJ</h3>
-        <p class="p-card-sub">$420,000 value — Winner: James M.</p>
-        <div class="p-card-row">
-          <div class="p-card-gauge">
-            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="#1a1a2e" stroke-width="4"/><circle cx="24" cy="24" r="20" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="0" style="transform:rotate(-90deg);transform-origin:center;"/></svg>
-            <span class="p-card-gauge-text">100%</span>
-          </div>
-          <div class="p-card-stats">
-            <div><div class="p-card-stat-label">Tickets</div><div class="p-card-stat-value">800 / 800</div></div>
-            <div><div class="p-card-stat-label">Odds</div><div class="p-card-stat-value">1 in 800</div></div>
-            <div><div class="p-card-stat-label">Entry</div><div class="p-card-stat-value">$349</div></div>
-          </div>
-        </div>
-        <div class="p-card-bottom">
-          <div class="p-card-countdown" style="color: var(--red);">Completed</div>
-          <span class="p-card-btn" style="background:#333;cursor:default;">Sold out</span>
-        </div>
-      </div>
-    </div>
-
+<!-- ═══════════════════════════════════════════ -->
+<!-- COMPETITION 2 — Porsche 911 GT3 -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="comp-divider"></div>
+<div class="comp-block">
+  <section class="hero">
+    <p class="hero-badge">&#9673; Live draw — June 22, 2026</p>
+    <h2 class="hero-title">Porsche 911 GT3</h2>
+    <p class="hero-sub">$197,000 value — or take $120,000 cash</p>
+  </section>
+  <div class="countdown-bar">
+    <div class="cd-block"><div class="cd-val" data-unit="days">12</div><div class="cd-lbl">Days</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-val" data-unit="hours">08</div><div class="cd-lbl">Hours</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-val" data-unit="min">33</div><div class="cd-lbl">Min</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-val" data-unit="sec">46</div><div class="cd-lbl">Sec</div></div>
   </div>
-</section>
+  <div class="car-visual">
+    <div class="car-visual-inner">
+      <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=900&q=80" alt="Porsche 911 GT3">
+      <div class="car-specs-overlay">
+        <span>Flat-6 · 502 HP</span>
+        <span>0-60 in 3.2s</span>
+        <span>RWD</span>
+        <span>$197,000 MSRP</span>
+      </div>
+      <div class="car-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+    </div>
+  </div>
+  <section class="gauge-section">
+    <div class="gauge-left">
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#1a1a2e" stroke-width="11"/>
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#22c55e" stroke-width="11" stroke-linecap="round" stroke-dasharray="540.35" stroke-dashoffset="216.14" style="transform:rotate(-90deg);transform-origin:center;filter:drop-shadow(0 0 6px rgba(34,197,94,0.25));"/>
+        </svg>
+        <div class="gauge-center">
+          <div class="gauge-number">1,500</div>
+          <div class="gauge-of">of 2,499 tickets</div>
+        </div>
+      </div>
+      <p class="gauge-remaining">Only <span>999</span> left</p>
+    </div>
+    <div class="gauge-right">
+      <div class="info-card">
+        <p class="info-card-label">Your odds with 1 ticket</p>
+        <p class="info-card-value">1 in 2,499</p>
+        <p class="info-card-note">Limited to 2,499 entries</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-label">Entry price</p>
+        <div class="info-card-row">
+          <p class="info-card-value">$129</p>
+          <span class="free-badge">Free entry available</span>
+        </div>
+      </div>
+      <a href="site_tirage.html" class="btn-get-ticket">Get my ticket →</a>
+    </div>
+  </section>
+  <section class="ticket-section">
+    <p class="ticket-section-title">Choose your tickets</p>
+    <div class="ticket-packs">
+      <div class="t-pack active"><p class="t-pack-count">1 ticket</p><p class="t-pack-price">$129</p></div>
+      <div class="t-pack"><div class="t-pack-badge">Popular</div><p class="t-pack-count">3 tickets</p><p class="t-pack-price">$309</p><p class="t-pack-save green">Save 20%</p></div>
+      <div class="t-pack"><p class="t-pack-count">5 tickets</p><p class="t-pack-price">$464</p><p class="t-pack-save amber">Save 28%</p></div>
+      <div class="t-pack"><p class="t-pack-count">10 tickets</p><p class="t-pack-price">$774</p><p class="t-pack-save amber">Save 40%</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- COMPETITION 3 — Ferrari 488 GTB -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="comp-divider"></div>
+<div class="comp-block">
+  <section class="hero">
+    <p class="hero-badge">&#9673; Live draw — June 29, 2026</p>
+    <h2 class="hero-title">Ferrari 488 GTB — Winner Takes All!</h2>
+    <p class="hero-sub">$285,000 value — one supercar for you &amp; one for your loved one!</p>
+  </section>
+  <div class="countdown-bar">
+    <div class="cd-block"><div class="cd-val" data-unit="days">12</div><div class="cd-lbl">Days</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-val" data-unit="hours">08</div><div class="cd-lbl">Hours</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-val" data-unit="min">33</div><div class="cd-lbl">Min</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-val" data-unit="sec">46</div><div class="cd-lbl">Sec</div></div>
+  </div>
+  <div class="car-visual">
+    <div class="car-visual-inner">
+      <img src="https://images.unsplash.com/photo-1616411501431-330ddc944cad?w=900&q=80" alt="Ferrari 488 GTB">
+      <div class="car-specs-overlay">
+        <span>V8 Twin-Turbo · 661 HP</span>
+        <span>0-60 in 3.0s</span>
+        <span>RWD</span>
+        <span>$285,000 MSRP</span>
+      </div>
+      <div class="car-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+    </div>
+  </div>
+  <section class="gauge-section">
+    <div class="gauge-left">
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#1a1a2e" stroke-width="11"/>
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#22c55e" stroke-width="11" stroke-linecap="round" stroke-dasharray="540.35" stroke-dashoffset="270.18" style="transform:rotate(-90deg);transform-origin:center;filter:drop-shadow(0 0 6px rgba(34,197,94,0.25));"/>
+        </svg>
+        <div class="gauge-center">
+          <div class="gauge-number">1,450</div>
+          <div class="gauge-of">of 2,900 tickets</div>
+        </div>
+      </div>
+      <p class="gauge-remaining">Only <span>1,450</span> left</p>
+    </div>
+    <div class="gauge-right">
+      <div class="info-card">
+        <p class="info-card-label">Your odds with 1 ticket</p>
+        <p class="info-card-value">1 in 2,900</p>
+        <p class="info-card-note">Limited to 2,900 entries</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-label">Entry price</p>
+        <div class="info-card-row">
+          <p class="info-card-value">$199</p>
+          <span class="free-badge">Free entry available</span>
+        </div>
+      </div>
+      <a href="site_tirage.html" class="btn-get-ticket">Get my ticket →</a>
+    </div>
+  </section>
+  <section class="ticket-section">
+    <p class="ticket-section-title">Choose your tickets</p>
+    <div class="ticket-packs">
+      <div class="t-pack active"><p class="t-pack-count">1 ticket</p><p class="t-pack-price">$199</p></div>
+      <div class="t-pack"><div class="t-pack-badge">Popular</div><p class="t-pack-count">3 tickets</p><p class="t-pack-price">$477</p><p class="t-pack-save green">Save 20%</p></div>
+      <div class="t-pack"><p class="t-pack-count">5 tickets</p><p class="t-pack-price">$716</p><p class="t-pack-save amber">Save 28%</p></div>
+      <div class="t-pack"><p class="t-pack-count">10 tickets</p><p class="t-pack-price">$1,194</p><p class="t-pack-save amber">Save 40%</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- COMPETITION 4 — McLaren 720S Spider -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="comp-divider"></div>
+<div class="comp-block">
+  <section class="hero">
+    <p class="hero-badge">&#9673; Live draw — July 6, 2026</p>
+    <h2 class="hero-title">McLaren 720S Spider</h2>
+    <p class="hero-sub">$299,000 value — only 770 tickets! Best odds you'll ever get!</p>
+  </section>
+  <div class="countdown-bar">
+    <div class="cd-block"><div class="cd-val" data-unit="days">12</div><div class="cd-lbl">Days</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-val" data-unit="hours">08</div><div class="cd-lbl">Hours</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-val" data-unit="min">33</div><div class="cd-lbl">Min</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-val" data-unit="sec">46</div><div class="cd-lbl">Sec</div></div>
+  </div>
+  <div class="car-visual">
+    <div class="car-visual-inner">
+      <img src="https://images.unsplash.com/photo-1638730558978-18941cc086ad?w=900&q=80" alt="McLaren 720S Spider">
+      <div class="car-specs-overlay">
+        <span>V8 Twin-Turbo · 710 HP</span>
+        <span>0-60 in 2.8s</span>
+        <span>RWD</span>
+        <span>$299,000 MSRP</span>
+      </div>
+      <div class="car-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+    </div>
+  </div>
+  <section class="gauge-section">
+    <div class="gauge-left">
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#1a1a2e" stroke-width="11"/>
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#22c55e" stroke-width="11" stroke-linecap="round" stroke-dasharray="540.35" stroke-dashoffset="378.25" style="transform:rotate(-90deg);transform-origin:center;filter:drop-shadow(0 0 6px rgba(34,197,94,0.25));"/>
+        </svg>
+        <div class="gauge-center">
+          <div class="gauge-number">231</div>
+          <div class="gauge-of">of 770 tickets</div>
+        </div>
+      </div>
+      <p class="gauge-remaining">Only <span>539</span> left</p>
+    </div>
+    <div class="gauge-right">
+      <div class="info-card">
+        <p class="info-card-label">Your odds with 1 ticket</p>
+        <p class="info-card-value">1 in 770</p>
+        <p class="info-card-note">Incredible odds — only 770 entries!</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-label">Entry price</p>
+        <div class="info-card-row">
+          <p class="info-card-value">$249</p>
+          <span class="free-badge">Free entry available</span>
+        </div>
+      </div>
+      <a href="site_tirage.html" class="btn-get-ticket">Get my ticket →</a>
+    </div>
+  </section>
+  <section class="ticket-section">
+    <p class="ticket-section-title">Choose your tickets</p>
+    <div class="ticket-packs">
+      <div class="t-pack active"><p class="t-pack-count">1 ticket</p><p class="t-pack-price">$249</p></div>
+      <div class="t-pack"><div class="t-pack-badge">Popular</div><p class="t-pack-count">3 tickets</p><p class="t-pack-price">$597</p><p class="t-pack-save green">Save 20%</p></div>
+      <div class="t-pack"><p class="t-pack-count">5 tickets</p><p class="t-pack-price">$896</p><p class="t-pack-save amber">Save 28%</p></div>
+      <div class="t-pack"><p class="t-pack-count">10 tickets</p><p class="t-pack-price">$1,494</p><p class="t-pack-save amber">Save 40%</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- COMPETITION 5 — SOLD OUT — Aventador SVJ -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="comp-divider"></div>
+<div class="comp-block sold-out">
+  <section class="hero">
+    <p class="hero-badge" style="color: var(--red);">&#9673; Completed — Winner: James M.</p>
+    <h2 class="hero-title">Lamborghini Aventador SVJ</h2>
+    <p class="hero-sub">$420,000 value — <span class="sold-badge-inline">Sold out</span></p>
+  </section>
+  <div class="car-visual">
+    <div class="car-visual-inner">
+      <img src="https://images.unsplash.com/photo-1617650728468-8581e439c864?w=900&q=80" alt="Lamborghini Aventador SVJ">
+      <div class="car-specs-overlay">
+        <span>V12 · 759 HP</span>
+        <span>0-60 in 2.8s</span>
+        <span>AWD</span>
+        <span>$420,000 MSRP</span>
+      </div>
+    </div>
+  </div>
+  <section class="gauge-section">
+    <div class="gauge-left">
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#1a1a2e" stroke-width="11"/>
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#22c55e" stroke-width="11" stroke-linecap="round" stroke-dasharray="540.35" stroke-dashoffset="0" style="transform:rotate(-90deg);transform-origin:center;"/>
+        </svg>
+        <div class="gauge-center">
+          <div class="gauge-number">800</div>
+          <div class="gauge-of">of 800 tickets</div>
+        </div>
+      </div>
+      <p class="gauge-remaining" style="color: var(--red);">All tickets sold</p>
+    </div>
+    <div class="gauge-right">
+      <div class="info-card">
+        <p class="info-card-label">Final odds were</p>
+        <p class="info-card-value">1 in 800</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-label">Entry price was</p>
+        <p class="info-card-value">$349</p>
+      </div>
+      <span class="btn-get-ticket" style="background:#333;cursor:default;">Sold out</span>
+    </div>
+  </section>
+</div>
 
 <!-- MISSION -->
 <section class="mission">
