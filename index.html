@@ -3,17 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WIN U SUPERCARS — Premium Supercar Competitions</title>
-<!-- Helvetica Neue (system font, no import needed) -->
+<title>WIN U SUPERCARS — Premium Supercar Sweepstakes</title>
 <style>
 :root {
-  --bg: #FFFFFF;
-  --text: #111111;
-  --text-muted: #888888;
-  --green: #114F33;
-  --green-light: #005128;
-  --green-bright: #22c55e;
-  --border: #E5E5E5;
+  --bg: #09090b;
+  --bg-card: #111116;
+  --bg-surface: #0f0f11;
+  --text: #ffffff;
+  --text-muted: #71717a;
+  --text-dim: #52525b;
+  --text-hint: #3f3f46;
+  --green: #22c55e;
+  --green-dark: #16a34a;
+  --amber: #f59e0b;
+  --red: #ef4444;
+  --border: #1c1c24;
+  --border-light: #27272a;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,122 +32,67 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
-/* ── TOP BANNER (black, centered, Apple Pay style) ── */
-.top-banner {
-  background: #000;
-  color: #fff;
-  text-align: center;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.top-banner .apple-pay-icon {
-  display: inline-flex;
-  align-items: center;
-  background: #fff;
-  color: #000;
-  border-radius: 4px;
-  padding: 2px 8px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-}
-
-/* ── NAV (identical to WinuWatch) ── */
+/* ── NAV ── */
 nav {
   position: sticky;
   top: 0;
   z-index: 1000;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 40px;
-  height: 86px;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  height: 64px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
 }
+
+.nav-left {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.nav-left a:hover { color: var(--text); }
 
 .logo {
-  font-size: 16px;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  background: var(--green);
-  color: #fff;
-  padding: 8px 14px;
-  margin-right: 40px;
-  white-space: nowrap;
-}
-
-.nav-links {
-  display: flex;
-  gap: 24px;
-  flex: 1;
-}
-
-.nav-links a {
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 4px;
   color: var(--text);
-  transition: color 0.2s;
-  white-space: nowrap;
 }
-
-.nav-links a:hover { color: var(--green); }
 
 .nav-right {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-left: auto;
-  white-space: nowrap;
+  font-size: 13px;
 }
 
-.nav-lang {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--green);
-  cursor: pointer;
+.nav-right a { color: var(--text-muted); }
+.nav-right a:hover { color: var(--text); }
+
+.btn-enter {
+  background: var(--green);
+  color: #000;
+  padding: 7px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: background 0.2s;
 }
 
-.nav-auth {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
-}
+.btn-enter:hover { background: var(--green-dark); }
 
-.nav-auth a { transition: color 0.2s; }
-.nav-auth a:hover { color: var(--green); }
+/* Mobile nav */
+.nav-left-icons, .nav-right-icons { display: none; align-items: center; gap: 16px; }
+.nav-icon { width: 22px; height: 22px; cursor: pointer; color: var(--text); }
 
-.nav-cart {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
-
-/* Nav mobile icons (hidden on desktop) */
-.nav-left-icons, .nav-right-icons {
-  display: none;
-  align-items: center;
-  gap: 16px;
-}
-
-.nav-icon {
-  width: 22px;
-  height: 22px;
-  cursor: pointer;
-}
-
-/* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
   gap: 5px;
-  width: 28px;
-  height: 28px;
+  width: 24px;
   cursor: pointer;
   background: none;
   border: none;
@@ -150,14 +100,7 @@ nav {
   z-index: 1002;
 }
 
-.hamburger span {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: var(--text);
-  transition: all 0.3s;
-}
-
+.hamburger span { display: block; width: 100%; height: 2px; background: var(--text); transition: all 0.3s; }
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
@@ -165,11 +108,9 @@ nav {
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 86px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #fff;
+  top: 64px;
+  left: 0; right: 0; bottom: 0;
+  background: var(--bg);
   z-index: 999;
   flex-direction: column;
   align-items: center;
@@ -178,297 +119,548 @@ nav {
 }
 
 .mobile-menu.active { display: flex; }
-
-.mobile-menu a {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text);
-}
-
+.mobile-menu a { font-size: 18px; font-weight: 500; color: var(--text); }
 .mobile-menu a:hover { color: var(--green); }
 
-/* ── PRODUCT CARDS (exact WinuWatch design) ── */
+/* ── HERO SECTION ── */
+.hero {
+  text-align: center;
+  padding: 32px 24px 16px;
+}
+
+.hero-badge {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.hero-title {
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1.05;
+  margin-bottom: 6px;
+}
+
+.hero-sub {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+/* ── COUNTDOWN ── */
+.countdown-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 24px;
+}
+
+.cd-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 18px;
+  text-align: center;
+  min-width: 70px;
+}
+
+.cd-val {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.cd-lbl {
+  font-size: 9px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+.cd-sep {
+  display: flex;
+  align-items: center;
+  color: var(--border-light);
+  font-size: 20px;
+}
+
+/* ── CAR VIDEO/PHOTO ── */
+.car-visual {
+  padding: 8px 24px;
+}
+
+.car-visual-inner {
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.car-visual-inner img,
+.car-visual-inner video {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+.car-specs-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+}
+
+.car-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.car-play-btn:hover { background: rgba(0,0,0,0.8); }
+
+.car-play-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+  margin-left: 3px;
+}
+
+/* ── GAUGE + INFO SECTION ── */
+.gauge-section {
+  display: flex;
+  padding: 24px;
+  gap: 24px;
+  align-items: stretch;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.gauge-left {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gauge-wrap {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.gauge-wrap svg { width: 200px; height: 200px; }
+
+.gauge-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.gauge-number {
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--green);
+  line-height: 1;
+}
+
+.gauge-of {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 3px;
+}
+
+.gauge-remaining {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+.gauge-remaining span {
+  color: var(--amber);
+  font-weight: 600;
+}
+
+.gauge-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+.info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  transition: border-color 0.3s;
+}
+
+.info-card-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.info-card-value {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.info-card-note {
+  font-size: 11px;
+  color: var(--green);
+  margin-top: 3px;
+}
+
+.info-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.free-badge {
+  font-size: 10px;
+  color: var(--text-muted);
+  border: 1px solid var(--border-light);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.btn-get-ticket {
+  background: var(--green);
+  color: #000;
+  padding: 14px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  display: block;
+  margin-top: 2px;
+  transition: background 0.2s;
+}
+
+.btn-get-ticket:hover { background: var(--green-dark); }
+
+/* ── TICKET PACKS ── */
+.ticket-section {
+  padding: 0 24px 28px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ticket-section-title {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--text-hint);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.ticket-packs {
+  display: flex;
+  gap: 6px;
+}
+
+.t-pack {
+  flex: 1;
+  background: var(--bg-card);
+  border-radius: 10px;
+  padding: 14px 8px;
+  text-align: center;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.t-pack.active {
+  border: 2px solid var(--green);
+}
+
+.t-pack-badge {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green);
+  color: #000;
+  font-size: 8px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.t-pack-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.t-pack-price {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.t-pack-save {
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.t-pack-save.green { color: var(--green); }
+.t-pack-save.amber { color: var(--amber); }
+
+/* ── PRODUCT CARDS (for other competitions) ── */
 .cards-section {
-  padding: 16px;
-  background: var(--bg);
+  padding: 48px 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.cards-section-title {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--text-hint);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 24px;
 }
 
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  max-width: 1400px;
-  margin: 0 auto;
+  gap: 16px;
 }
 
-/* Card container */
 .p-card {
+  background: var(--bg-card);
+  border-radius: 14px;
   overflow: hidden;
+  border: 1px solid var(--border);
   cursor: pointer;
-  background: #1D1B1C;
-  position: relative;
-  border: 1px solid #DBE5E0;
+  transition: border-color 0.3s;
 }
+
+.p-card:hover { border-color: var(--border-light); }
 
 .p-card img {
   width: 100%;
-  height: 552px;
+  height: 280px;
   object-fit: cover;
   display: block;
 }
 
-/* Card info (dark area below image) */
-.p-info {
-  background: #1D1B1C;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.p-card-body {
+  padding: 18px;
 }
 
-.p-info-top {
-  padding: 25px 22px;
-}
-
-.p-title {
-  font-size: 28px;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.p-sub {
-  font-size: 20px;
-  font-weight: 400;
-  color: #fff;
-  letter-spacing: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Countdown + Prices ROW (same line like WinuWatch) */
-.p-row {
-  display: flex;
-  align-items: center;
-  padding: 20px 22px;
-}
-
-.p-countdown {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  flex: 1;
-}
-
-.p-cd-unit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 16px;
-}
-
-.p-cd-val {
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.06em;
-}
-
-.p-cd-lbl {
-  font-size: 10.5px;
-  font-weight: 700;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -0.06em;
-}
-
-.p-cd-sep {
-  width: 1px;
-  height: 16px;
-  background: #fff;
-  margin-top: 4px;
-  flex-shrink: 0;
-}
-
-/* Prices block (right side, same row as countdown) */
-.p-prices {
-  display: flex;
-  gap: 0;
-  margin-left: auto;
-}
-
-.p-price {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 0 20px;
-}
-
-.p-price-bar {
-  width: 1px;
-  height: 40px;
-  background: var(--green-bright);
-  flex-shrink: 0;
-}
-
-.p-price-val {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--green-bright);
-  white-space: nowrap;
-}
-
-.p-price-lbl {
-  font-size: 16px;
-  font-weight: 400;
-  color: #fff;
-  white-space: nowrap;
-}
-
-/* Italic text */
-.p-italic {
-  font-size: 12px;
-  font-style: italic;
-  color: rgba(255,255,255,0.92);
-  padding: 0 22px 16px;
-}
-
-/* Bottom bar: tickets left + green button right */
-.p-bottom {
-  display: flex;
-  align-items: stretch;
-  border-top: 1px solid #333;
-}
-
-.p-tickets {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 18px 22px;
-  background: #151314;
-}
-
-.p-tickets-num {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--green-bright);
-}
-
-.p-tickets-lbl {
-  font-size: 14px;
+.p-card-title {
+  font-size: 18px;
   font-weight: 600;
-  color: #fff;
+  margin-bottom: 4px;
+}
+
+.p-card-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.p-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.p-card-gauge {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+.p-card-gauge svg { width: 48px; height: 48px; }
+
+.p-card-gauge-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.p-card-stats {
+  display: flex;
+  gap: 16px;
+}
+
+.p-card-stat-label {
+  font-size: 10px;
+  color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.p-btn {
+.p-card-stat-value {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 1px;
+}
+
+.p-card-bottom {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 22px 48px;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.p-card-countdown {
+  display: flex;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.p-card-countdown span {
+  background: rgba(255,255,255,0.05);
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.p-card-btn {
   background: var(--green);
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  white-space: nowrap;
+  color: #000;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
   transition: background 0.2s;
 }
 
-.p-btn:hover { background: var(--green-light); }
+.p-card-btn:hover { background: var(--green-dark); }
 
-.p-btn-arrow {
-  font-size: 22px;
-}
-
-/* SOLD OUT variant */
-.p-card.sold-out img {
-  filter: brightness(0.45) grayscale(0.3);
-}
+/* SOLD OUT */
+.p-card.sold-out { opacity: 0.6; }
+.p-card.sold-out img { filter: grayscale(0.4); }
 
 .sold-badge {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: #E30F0F;
+  display: inline-block;
+  background: var(--red);
   color: #fff;
-  font-size: 12px;
-  font-weight: 800;
-  padding: 8px 20px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 4px;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  z-index: 2;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
 }
 
-.p-card.sold-out .p-btn {
-  background: #E30F0F;
+.p-card.sold-out .p-card-btn {
+  background: #333;
   cursor: default;
 }
 
-.p-card.sold-out .p-btn:hover { background: #E30F0F; }
+/* ── STATS BAR (only on homepage) ── */
+.stats-bar {
+  padding: 24px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+}
 
-/* ── MISSION SECTION ── */
+.stats-bar-inner {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.stat-value.green { color: var(--green); }
+
+.stat-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.stat-sep {
+  width: 1px;
+  background: var(--border);
+}
+
+/* ── MISSION ── */
 .mission {
-  padding: 100px 48px;
-  max-width: 1400px;
+  padding: 80px 48px;
+  max-width: 1000px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+  text-align: center;
 }
 
 .mission-title {
-  font-size: 64px;
-  font-weight: 900;
-  line-height: 1.15;
-  letter-spacing: -1.5px;
-  color: var(--text);
-  text-transform: uppercase;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 20px;
 }
 
 .mission-title .green { color: var(--green); }
 
-.mission-goal {
-  font-size: 64px;
-  font-weight: 900;
-  line-height: 1.15;
-  letter-spacing: -1.5px;
-  color: var(--text);
-  text-transform: uppercase;
-  margin-top: 40px;
-}
-
-.mission-goal .green { color: var(--green); }
-
-.mission-dream {
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--text);
-  text-transform: uppercase;
-  margin-top: 16px;
-}
-
 .mission-desc {
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: #333;
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
-/* ── WINNERS CAROUSEL ── */
+/* ── WINNERS ── */
 .winners {
-  padding: 60px 48px;
+  padding: 60px 24px;
   overflow: hidden;
 }
 
@@ -477,43 +669,45 @@ nav {
   justify-content: space-between;
   align-items: center;
   max-width: 1400px;
-  margin: 0 auto 32px;
+  margin: 0 auto 24px;
 }
 
 .section-title {
-  font-size: 36px;
-  font-weight: 900;
-  letter-spacing: -1px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
-
-.section-title .green { color: var(--green); }
 
 .winners-scroll {
   display: flex;
-  gap: 20px;
+  gap: 12px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 20px;
+  padding-bottom: 16px;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.winners-scroll::-webkit-scrollbar { height: 4px; }
-.winners-scroll::-webkit-scrollbar-track { background: #f0f0f0; }
+.winners-scroll::-webkit-scrollbar { height: 3px; }
+.winners-scroll::-webkit-scrollbar-track { background: var(--border); }
 .winners-scroll::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
 
 .w-card {
-  min-width: 280px;
+  min-width: 240px;
+  border-radius: 12px;
   overflow: hidden;
   scroll-snap-align: start;
   flex-shrink: 0;
   position: relative;
+  border: 1px solid var(--border);
 }
 
 .w-card img {
   width: 100%;
-  height: 360px;
+  height: 300px;
   object-fit: cover;
   display: block;
 }
@@ -521,241 +715,195 @@ nav {
 .w-overlay {
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--green);
-  color: #fff;
-  padding: 14px 18px;
+  left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  padding: 20px 16px 14px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 
-.w-name { font-size: 13px; font-weight: 700; }
-.w-prize { font-size: 12px; opacity: 0.8; }
-.w-val { font-size: 18px; font-weight: 800; text-align: right; }
-.w-val-lbl { font-size: 9px; opacity: 0.7; text-transform: uppercase; }
+.w-name { font-size: 13px; font-weight: 600; }
+.w-prize { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.w-val { font-size: 16px; font-weight: 700; color: var(--green); text-align: right; }
 
 .winners-nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  margin-top: 24px;
+  gap: 16px;
+  margin-top: 20px;
 }
 
 .winners-nav button {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  border: 2px solid var(--text);
-  background: #fff;
+  border: 1px solid var(--border-light);
+  background: transparent;
+  color: var(--text);
   font-size: 16px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: all 0.2s;
 }
 
 .winners-nav button:hover {
   background: var(--green);
   border-color: var(--green);
-  color: #fff;
+  color: #000;
 }
 
-.btn-green {
-  background: var(--green);
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  padding: 14px 32px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 700;
+.btn-outline {
+  border: 1px solid var(--border-light);
+  color: var(--text);
+  background: transparent;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
 }
 
-.btn-green:hover { background: var(--green-light); }
+.btn-outline:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: #000;
+}
 
 /* ── HOW TO ENTER ── */
 .how-section {
-  padding: 100px 48px;
-  max-width: 1400px;
+  padding: 80px 48px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-.how-top {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  margin-bottom: 80px;
-}
-
 .how-title {
-  font-size: 64px;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-  text-transform: uppercase;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 48px;
 }
 
 .how-title .green { color: var(--green); }
 
-.how-desc {
-  font-size: 22px;
-  line-height: 1.6;
-  color: #333;
-  font-weight: 500;
-}
-
 .how-steps {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  position: relative;
-}
-
-.how-steps::before {
-  content: '';
-  position: absolute;
-  top: 36px;
-  left: 72px;
-  right: 72px;
-  height: 2px;
-  background: repeating-linear-gradient(to right, #ddd 0, #ddd 8px, transparent 8px, transparent 16px);
+  gap: 24px;
 }
 
 .how-step {
-  text-align: center;
-  position: relative;
-  z-index: 1;
   flex: 1;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 20px;
 }
 
-.how-step-icon {
-  width: 72px;
-  height: 72px;
+.how-step-num {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: #111;
-  color: #fff;
+  background: var(--green);
+  color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 20px;
-  font-size: 24px;
+  margin: 0 auto 16px;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .how-step-name {
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 1px;
   margin-bottom: 8px;
 }
 
 .how-step-desc {
   font-size: 13px;
-  color: #888;
+  color: var(--text-muted);
   line-height: 1.5;
-  max-width: 200px;
-  margin: 0 auto;
 }
 
 .how-cta {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
-/* ── COMMUNITY HAS WON ── */
-.community {
-  padding: 80px 48px;
-  background: #f8f8f8;
-}
-
-.community-head {
-  max-width: 1400px;
-  margin: 0 auto 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.community-title {
-  font-size: 36px;
-  font-weight: 900;
-  letter-spacing: -1px;
-  line-height: 1.15;
-}
-
-.community-title .green { color: var(--green); }
-
-.community-desc {
-  font-size: 15px;
-  line-height: 1.7;
-  color: #555;
-}
-
-.community-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  max-width: 1400px;
+/* ── FEED / PADDOCK ── */
+.feed-section {
+  padding: 60px 24px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-.c-card {
-  background: #fff;
-  overflow: hidden;
-  border: 1px solid #eee;
+.feed-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 24px;
 }
 
-.c-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
+.feed-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.2s;
+  gap: 24px;
 }
 
-.c-card-body {
-  padding: 14px;
+.feed-item:first-child { border-top: 1px solid var(--border); }
+
+.feed-item:hover { padding-left: 12px; }
+
+.feed-item-title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
-.c-card-name { font-size: 12px; font-weight: 700; margin-bottom: 3px; }
-.c-card-date { font-size: 11px; color: #999; margin-bottom: 8px; }
-.c-card-val { font-size: 18px; font-weight: 800; color: var(--green); }
-.c-card-lbl { font-size: 9px; color: #999; text-transform: uppercase; }
+.feed-item-date {
+  font-size: 13px;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.feed-more-wrap { text-align: center; margin-top: 32px; }
 
 /* ── FOOTER ── */
 footer {
-  background: #fff;
-  border-top: 1px solid #eee;
-  padding: 60px 48px 32px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  padding: 48px 48px 24px;
 }
 
 .footer-inner {
   max-width: 1400px;
-  margin: 0 auto 40px;
+  margin: 0 auto 32px;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   gap: 48px;
 }
 
 .footer-logo {
-  font-size: 16px;
-  font-weight: 900;
-  background: var(--green);
-  color: #fff;
-  padding: 6px 12px;
-  display: inline-block;
-  margin-bottom: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
 }
 
 .footer-tagline {
   font-size: 13px;
-  color: #999;
+  color: var(--text-dim);
   line-height: 1.6;
 }
 
@@ -766,9 +914,8 @@ footer {
 }
 
 .footer-links a {
-  font-size: 14px;
-  font-weight: 500;
-  color: #555;
+  font-size: 13px;
+  color: var(--text-muted);
   transition: color 0.2s;
 }
 
@@ -778,345 +925,119 @@ footer {
 
 .footer-email {
   font-size: 13px;
-  color: #999;
+  color: var(--text-dim);
   margin-bottom: 12px;
 }
 
 .footer-socials {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 8px;
 }
 
 .footer-socials a {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
-  color: #999;
+  font-size: 11px;
+  color: var(--text-muted);
   transition: all 0.2s;
 }
 
 .footer-socials a:hover {
   background: var(--green);
   border-color: var(--green);
-  color: #fff;
+  color: #000;
 }
 
 .footer-bottom {
   text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-}
-
-.footer-copy { font-size: 12px; color: #999; }
-
-/* ── FEED / THE PADDOCK (WinuWatch style) ── */
-.feed-section {
-  padding: 80px 48px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.feed-intro {
-  text-align: center;
-  margin-bottom: 56px;
-}
-
-.feed-passion {
-  font-size: 48px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.feed-subtitle {
-  font-size: 17px;
-  line-height: 1.6;
-  color: #555;
-  max-width: 640px;
-  margin: 0 auto;
-}
-
-.feed-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.feed-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--border);
-  transition: background 0.2s;
-  gap: 24px;
-}
-
-.feed-item:first-child {
+  padding-top: 16px;
   border-top: 1px solid var(--border);
 }
 
-.feed-item:hover {
-  background: #fafafa;
-  padding-left: 16px;
-  padding-right: 16px;
-  margin: 0 -16px;
-  border-radius: 12px;
-}
-
-.feed-item-title {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.feed-item-date {
-  font-size: 14px;
-  color: #999;
-  white-space: nowrap;
-}
-
-.feed-more {
-  display: block;
-  text-align: center;
-  margin-top: 40px;
-  font-size: 15px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--green);
-  padding: 16px 40px;
-  border: 2px solid var(--green);
-  border-radius: 50px;
-  display: inline-block;
-  transition: all 0.3s;
-}
-
-.feed-more:hover {
-  background: var(--green);
-  color: #fff;
-}
-
-.feed-more-wrap {
-  text-align: center;
-  margin-top: 40px;
-}
-
-/* ── COMMUNITY CTA (Trustpilot + Instagram) ── */
-.community-cta {
-  padding: 60px 48px;
-  background: #f5f5f5;
-}
-
-.community-cta-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.community-cta-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-
-.community-cta-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 40px;
-  text-align: center;
-  transition: transform 0.3s;
-}
-
-.community-cta-card:hover {
-  transform: translateY(-2px);
-}
-
-.community-cta-label {
-  font-size: 14px;
-  color: #888;
-  margin-bottom: 12px;
-}
-
-.community-cta-title {
-  font-size: 28px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.5px;
-  margin-bottom: 16px;
-}
-
-.community-cta-btn {
-  display: inline-block;
-  padding: 14px 32px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s;
-}
-
-.cta-trustpilot .community-cta-btn {
-  background: var(--green);
-  color: #fff;
-}
-
-.cta-trustpilot .community-cta-btn:hover {
-  background: var(--green-light);
-}
-
-.cta-instagram .community-cta-btn {
-  background: #000;
-  color: #fff;
-}
-
-.cta-instagram .community-cta-btn:hover {
-  background: #333;
-}
-
-.community-cta-count {
-  font-size: 13px;
-  color: #999;
-  margin-top: 12px;
-}
-
-/* ── INSTAGRAM BANNER ── */
-.insta-banner {
-  background: #f5f5f5;
-  text-align: center;
-  padding: 12px 20px;
-  font-size: 15px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
-.insta-banner a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  font-family: 'Georgia', serif;
-  font-style: italic;
-  font-size: 17px;
-}
-
-.insta-icon {
-  width: 24px;
-  height: 24px;
-  border: 2px solid #111;
-  border-radius: 6px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-style: normal;
-  font-size: 14px;
-}
+.footer-copy { font-size: 11px; color: var(--text-dim); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .cards-grid { grid-template-columns: 1fr; }
-  .p-card img { height: 400px; }
-  .mission { grid-template-columns: 1fr; gap: 40px; padding: 60px 48px; }
-  .how-top { grid-template-columns: 1fr; gap: 24px; }
-  .community-head { grid-template-columns: 1fr; }
-  .community-grid { grid-template-columns: repeat(3, 1fr); }
+  .how-steps { flex-wrap: wrap; }
+  .how-step { flex: 1 1 45%; }
   .footer-inner { grid-template-columns: 1fr; text-align: center; }
   .footer-contact { text-align: center; }
   .footer-socials { justify-content: center; }
   .footer-links { justify-items: center; }
-  .community-cta-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {
   .hamburger { display: flex; }
-  .nav-links, .nav-right { display: none; }
+  .nav-left, .nav-right { display: none; }
   .nav-left-icons, .nav-right-icons { display: flex; }
-  nav { padding: 0 16px; height: 56px; justify-content: space-between; }
-  .logo { font-size: 16px; font-weight: 900; padding: 0; margin-right: 0; background: none; color: var(--text); letter-spacing: -0.5px; }
-  .top-banner { font-size: 12px; padding: 8px 16px; }
+  nav { padding: 0 16px; height: 56px; }
+  .logo { font-size: 15px; letter-spacing: 3px; }
   .mobile-menu { top: 56px; }
 
-  .cards-section { padding: 8px; }
-  .cards-grid { gap: 36px; }
-  .p-card img { height: 300px; }
-  .p-info-top { padding: 16px 16px; }
-  .p-title { font-size: 18px; }
-  .p-sub { font-size: 14px; }
-  .p-cd-val { font-size: 18px; }
-  .p-cd-unit { padding: 0 8px; }
-  .p-price-val { font-size: 18px; }
-  .p-price-lbl { font-size: 13px; }
-  .p-price { padding: 0 12px; }
-  .p-row { flex-wrap: wrap; gap: 12px; padding: 14px 16px; }
-  .p-prices { margin-left: 0; }
-  .p-tickets { padding: 14px 16px; }
-  .p-tickets-num { font-size: 18px; }
-  .p-tickets-lbl { font-size: 11px; }
-  .p-btn { padding: 14px 20px; font-size: 14px; }
+  .hero { padding: 24px 16px 12px; }
+  .hero-title { font-size: 24px; }
 
-  .mission { padding: 60px 20px; }
-  .mission-title { font-size: 36px; letter-spacing: -1px; }
-  .mission-goal { font-size: 36px; letter-spacing: -1px; margin-top: 24px; }
-  .mission-dream { font-size: 18px; }
-  .mission-desc { font-size: 16px; }
+  .countdown-bar { gap: 8px; padding: 16px; }
+  .cd-block { padding: 8px 12px; min-width: 56px; }
+  .cd-val { font-size: 22px; }
 
-  .winners { padding: 40px 20px; }
-  .section-title { font-size: 26px; }
-  .w-card { min-width: 240px; }
-  .w-card img { height: 280px; }
+  .car-visual { padding: 8px 16px; }
+  .car-visual-inner img,
+  .car-visual-inner video { height: 200px; }
 
-  .how-section { padding: 60px 20px; }
-  .how-title { font-size: 36px; letter-spacing: -1px; }
-  .how-steps { flex-direction: column; gap: 32px; align-items: center; }
-  .how-steps::before { display: none; }
+  .gauge-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px;
+  }
 
-  .community { padding: 50px 20px; }
-  .community-title { font-size: 26px; }
-  .community-grid { grid-template-columns: 1fr 1fr; }
+  .gauge-right { width: 100%; }
 
-  footer { padding: 40px 20px 20px; }
-  .footer-inner { gap: 24px; }
-  .footer-links { grid-template-columns: 1fr; gap: 12px; }
-  .feed-section { padding: 50px 20px; }
-  .feed-passion { font-size: 28px; }
-  .feed-item-title { font-size: 16px; }
-  .feed-item { padding: 20px 0; }
-  .community-cta { padding: 40px 20px; }
-  .community-cta-title { font-size: 28px; }
-  .community-cta-grid { grid-template-columns: 1fr; gap: 16px; }
+  .ticket-section { padding: 0 16px 24px; }
+  .ticket-packs { flex-wrap: wrap; }
+  .t-pack { flex: 1 1 45%; }
+
+  .cards-section { padding: 32px 16px; }
+  .p-card img { height: 200px; }
+  .p-card-stats { gap: 12px; }
+
+  .mission { padding: 50px 20px; }
+  .mission-title { font-size: 26px; }
+
+  .winners { padding: 40px 16px; }
+  .w-card { min-width: 200px; }
+  .w-card img { height: 240px; }
+
+  .how-section { padding: 50px 20px; }
+  .how-steps { flex-direction: column; }
+  .how-step { flex: 1 1 100%; }
+
+  .feed-section { padding: 40px 16px; }
+  .feed-item-title { font-size: 14px; }
+
+  footer { padding: 32px 16px 16px; }
+  .footer-links { grid-template-columns: 1fr; gap: 10px; }
+
+  .stats-bar-inner { gap: 20px; }
+  .stat-value { font-size: 18px; }
 }
 
 @media (max-width: 480px) {
-  .p-card img { height: 220px; }
-  .p-row { flex-direction: column; align-items: flex-start; }
-  .p-countdown { width: 100%; justify-content: center; }
-  .p-prices { width: 100%; margin-top: 0; }
-  .p-bottom { flex-direction: column; }
-  .p-tickets { justify-content: center; }
-  .p-btn { justify-content: center; width: 100%; }
-  .community-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 20px; }
+  .cd-val { font-size: 18px; }
+  .cd-block { min-width: 48px; padding: 6px 8px; }
+  .p-card-row { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
 </style>
 </head>
 <body>
-
-<!-- TOP BANNER -->
-<div class="top-banner">
-  <span class="apple-pay-icon">Pay</span>
-  Apple Pay is available on winusupercars!
-</div>
 
 <!-- NAV -->
 <nav>
@@ -1124,19 +1045,16 @@ footer {
     <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 0 0 6 8"/><rect x="3" y="8" width="18" height="14" rx="2"/></svg>
     <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
   </div>
-  <a href="site_home.html" class="logo">WINUSUPERCARS</a>
-  <div class="nav-links">
-    <a href="site_comment.html">How to play</a>
+  <div class="nav-left">
+    <a href="site_comment.html">How it works</a>
     <a href="site_gagnants.html">Winners</a>
     <a href="site_paddock.html">The Paddock</a>
-    <a href="site_faq.html">Faq</a>
-    <a href="site_mentions.html">About us</a>
-    <a href="#">Contact us</a>
   </div>
+  <a href="site_home.html" class="logo">WINUSUPERCARS</a>
   <div class="nav-right">
-    <span class="nav-lang">English &#9662;</span>
-    <span class="nav-auth"><a href="#">Login</a> | <a href="#">Register</a></span>
-    <svg class="nav-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8"/><rect x="3" y="8" width="18" height="14" rx="2"/></svg>
+    <a href="site_faq.html">FAQ</a>
+    <a href="#">Login</a>
+    <a href="site_tirage.html" class="btn-enter">Enter now</a>
   </div>
   <div class="nav-right-icons">
     <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -1148,273 +1066,232 @@ footer {
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="site_comment.html">How to play</a>
+  <a href="site_comment.html">How it works</a>
   <a href="site_gagnants.html">Winners</a>
   <a href="site_paddock.html">The Paddock</a>
-  <a href="site_faq.html">Faq</a>
+  <a href="site_faq.html">FAQ</a>
   <a href="site_mentions.html">About us</a>
-  <a href="#">Contact us</a>
   <a href="#">Login</a>
-  <a href="#">Register</a>
 </div>
 
-<!-- INSTAGRAM BANNER -->
-<div class="insta-banner">
-  Join our community on
-  <a href="#">Instagram <span class="insta-icon">&#9741;</span></a>
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-badge">&#9673; Live draw — June 15, 2026</p>
+  <h1 class="hero-title">2024 Lamborghini Huracán STO</h1>
+  <p class="hero-sub">$327,000 value — or take $180,000 cash</p>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="countdown-bar">
+  <div class="cd-block"><div class="cd-val" id="cd-days">12</div><div class="cd-lbl">Days</div></div>
+  <div class="cd-sep">:</div>
+  <div class="cd-block"><div class="cd-val" id="cd-hours">08</div><div class="cd-lbl">Hours</div></div>
+  <div class="cd-sep">:</div>
+  <div class="cd-block"><div class="cd-val" id="cd-min">33</div><div class="cd-lbl">Min</div></div>
+  <div class="cd-sep">:</div>
+  <div class="cd-block"><div class="cd-val" id="cd-sec">46</div><div class="cd-lbl">Sec</div></div>
 </div>
 
-<!-- PRODUCT CARDS -->
+<!-- CAR VISUAL -->
+<div class="car-visual">
+  <div class="car-visual-inner">
+    <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=900&q=80" alt="Lamborghini Huracán STO">
+    <div class="car-specs-overlay">
+      <span>V10 · 640 HP</span>
+      <span>0-60 in 3.0s</span>
+      <span>RWD</span>
+      <span>$327,000 MSRP</span>
+    </div>
+    <div class="car-play-btn">
+      <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- GAUGE + INFO -->
+<section class="gauge-section">
+  <div class="gauge-left">
+    <div class="gauge-wrap">
+      <svg viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="86" fill="none" stroke="#1a1a2e" stroke-width="11"/>
+        <circle cx="100" cy="100" r="86" fill="none" stroke="#22c55e" stroke-width="11" stroke-linecap="round"
+          stroke-dasharray="540.35" stroke-dashoffset="232.35"
+          style="transform: rotate(-90deg); transform-origin: center; filter: drop-shadow(0 0 6px rgba(34,197,94,0.25));"/>
+      </svg>
+      <div class="gauge-center">
+        <div class="gauge-number">2,847</div>
+        <div class="gauge-of">of 5,000 tickets</div>
+      </div>
+    </div>
+    <p class="gauge-remaining">Only <span>2,153</span> left</p>
+  </div>
+
+  <div class="gauge-right">
+    <div class="info-card" id="odds-box">
+      <p class="info-card-label">Your odds with <span id="odds-tc" style="color: var(--green);">1 ticket</span></p>
+      <p class="info-card-value" id="odds-val">1 in 5,000</p>
+      <p class="info-card-note" id="odds-note">Best odds in any car sweepstakes</p>
+    </div>
+    <div class="info-card">
+      <p class="info-card-label">Entry price</p>
+      <div class="info-card-row">
+        <p class="info-card-value">$24.99</p>
+        <span class="free-badge">Free entry available</span>
+      </div>
+    </div>
+    <a href="site_tirage.html" class="btn-get-ticket">Get my ticket →</a>
+  </div>
+</section>
+
+<!-- TICKET PACKS -->
+<section class="ticket-section">
+  <p class="ticket-section-title">Choose your tickets</p>
+  <div class="ticket-packs" id="ticketPacks">
+    <div class="t-pack active" data-t="1" data-o="1 in 5,000" data-n="Best odds in any car sweepstakes">
+      <p class="t-pack-count">1 ticket</p>
+      <p class="t-pack-price">$24.99</p>
+    </div>
+    <div class="t-pack" data-t="3" data-o="1 in 1,667" data-n="3x more chances to win!">
+      <div class="t-pack-badge">Popular</div>
+      <p class="t-pack-count">3 tickets</p>
+      <p class="t-pack-price">$59.99</p>
+      <p class="t-pack-save green">Save 20%</p>
+    </div>
+    <div class="t-pack" data-t="5" data-o="1 in 1,000" data-n="5x chances — serious player">
+      <p class="t-pack-count">5 tickets</p>
+      <p class="t-pack-price">$89.99</p>
+      <p class="t-pack-save amber">Save 28%</p>
+    </div>
+    <div class="t-pack" data-t="10" data-o="1 in 500" data-n="10x chances — max advantage!">
+      <p class="t-pack-count">10 tickets</p>
+      <p class="t-pack-price">$149.99</p>
+      <p class="t-pack-save amber">Save 40%</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR (homepage only) -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div><div class="stat-value green">47</div><div class="stat-label">Winners</div></div>
+    <div class="stat-sep"></div>
+    <div><div class="stat-value">$4.2M</div><div class="stat-label">Awarded</div></div>
+    <div class="stat-sep"></div>
+    <div><div class="stat-value">4.8 ★</div><div class="stat-label">Trustpilot</div></div>
+  </div>
+</div>
+
+<!-- MORE COMPETITIONS -->
 <section class="cards-section">
+  <p class="cards-section-title">More competitions</p>
   <div class="cards-grid">
 
-    <!-- Card 1 — LIVE -->
+    <!-- Card 1 -->
     <div class="p-card">
-      <img src="https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=1200&h=800&fit=crop&crop=center" alt="Lamborghini Huracan EVO">
-      <div class="p-info">
-        <div class="p-info-top">
-          <h2 class="p-title">NEW LAMBORGHINI HURACAN EVO</h2>
-          <p class="p-sub">Unbeatable opportunity! The Italian Beast is here!</p>
-        </div>
-        <div class="p-row">
-          <div class="p-countdown">
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="days">12</div><div class="p-cd-lbl">DAY</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="hours">08</div><div class="p-cd-lbl">HOUR</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="min">34</div><div class="p-cd-lbl">MIN</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="sec">51</div><div class="p-cd-lbl">SEC</div></div>
+      <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&q=80" alt="Porsche 911 GT3">
+      <div class="p-card-body">
+        <h3 class="p-card-title">Porsche 911 GT3</h3>
+        <p class="p-card-sub">$197,000 value — or $120,000 cash</p>
+        <div class="p-card-row">
+          <div class="p-card-gauge">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="#1a1a2e" stroke-width="4"/><circle cx="24" cy="24" r="20" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="50.26" style="transform:rotate(-90deg);transform-origin:center;"/></svg>
+            <span class="p-card-gauge-text">60%</span>
           </div>
-          <div class="p-prices">
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$261k</div><div class="p-price-lbl">Car Value</div></div></div>
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$149</div><div class="p-price-lbl">Entry Price</div></div></div>
+          <div class="p-card-stats">
+            <div><div class="p-card-stat-label">Tickets</div><div class="p-card-stat-value">1,500 / 2,499</div></div>
+            <div><div class="p-card-stat-label">Odds</div><div class="p-card-stat-value">1 in 2,499</div></div>
+            <div><div class="p-card-stat-label">Entry</div><div class="p-card-stat-value">$129</div></div>
           </div>
         </div>
-        <p class="p-italic">or until all tickets are sold out. But never after the draw date</p>
-      </div>
-      <div class="p-bottom">
-        <div class="p-tickets"><span class="p-tickets-num">2,999</span><span class="p-tickets-lbl">MAXIMUM TICKETS</span></div>
-        <a href="site_tirage.html" class="p-btn">Get your ticket <span class="p-btn-arrow">→</span></a>
+        <div class="p-card-bottom">
+          <div class="p-card-countdown">
+            <span data-unit="days">12</span>d
+            <span data-unit="hours">08</span>h
+            <span data-unit="min">33</span>m
+          </div>
+          <a href="site_tirage.html" class="p-card-btn">Enter →</a>
+        </div>
       </div>
     </div>
 
-    <!-- Card 2 — LIVE -->
+    <!-- Card 2 -->
     <div class="p-card">
-      <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&h=800&fit=crop&crop=center" alt="Porsche 911 GT3">
-      <div class="p-info">
-        <div class="p-info-top">
-          <h2 class="p-title">THE PORSCHE 911 GT3 IS FINALLY HERE!</h2>
-          <p class="p-sub">Super LOW COST comp'!</p>
-        </div>
-        <div class="p-row">
-          <div class="p-countdown">
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="days">12</div><div class="p-cd-lbl">DAY</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="hours">08</div><div class="p-cd-lbl">HOUR</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="min">34</div><div class="p-cd-lbl">MIN</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="sec">51</div><div class="p-cd-lbl">SEC</div></div>
+      <img src="https://images.unsplash.com/photo-1616411501431-330ddc944cad?w=800&q=80" alt="Ferrari 488 GTB">
+      <div class="p-card-body">
+        <h3 class="p-card-title">Ferrari 488 GTB</h3>
+        <p class="p-card-sub">$285,000 value — win 2 supercars!</p>
+        <div class="p-card-row">
+          <div class="p-card-gauge">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="#1a1a2e" stroke-width="4"/><circle cx="24" cy="24" r="20" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="62.83" style="transform:rotate(-90deg);transform-origin:center;"/></svg>
+            <span class="p-card-gauge-text">50%</span>
           </div>
-          <div class="p-prices">
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$197k</div><div class="p-price-lbl">Car Value</div></div></div>
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$129</div><div class="p-price-lbl">Entry Price</div></div></div>
+          <div class="p-card-stats">
+            <div><div class="p-card-stat-label">Tickets</div><div class="p-card-stat-value">1,450 / 2,900</div></div>
+            <div><div class="p-card-stat-label">Odds</div><div class="p-card-stat-value">1 in 2,900</div></div>
+            <div><div class="p-card-stat-label">Entry</div><div class="p-card-stat-value">$199</div></div>
           </div>
         </div>
-        <p class="p-italic">or until all tickets are sold out. But never after the draw date</p>
-      </div>
-      <div class="p-bottom">
-        <div class="p-tickets"><span class="p-tickets-num">2,499</span><span class="p-tickets-lbl">MAXIMUM TICKETS</span></div>
-        <a href="site_tirage.html" class="p-btn">Get your ticket <span class="p-btn-arrow">→</span></a>
+        <div class="p-card-bottom">
+          <div class="p-card-countdown">
+            <span data-unit="days">12</span>d
+            <span data-unit="hours">08</span>h
+            <span data-unit="min">33</span>m
+          </div>
+          <a href="site_tirage.html" class="p-card-btn">Enter →</a>
+        </div>
       </div>
     </div>
 
-    <!-- Card 3 — LIVE -->
+    <!-- Card 3 -->
     <div class="p-card">
-      <img src="https://images.unsplash.com/photo-1616411501431-330ddc944cad?w=1200&h=800&fit=crop&crop=center" alt="Ferrari 488 GTB">
-      <div class="p-info">
-        <div class="p-info-top">
-          <h2 class="p-title">WINNER TAKES ALL!!</h2>
-          <p class="p-sub">One SUPERCAR For You &amp; One SUPERCAR For Your loved one!</p>
-        </div>
-        <div class="p-row">
-          <div class="p-countdown">
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="days">12</div><div class="p-cd-lbl">DAY</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="hours">08</div><div class="p-cd-lbl">HOUR</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="min">34</div><div class="p-cd-lbl">MIN</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="sec">51</div><div class="p-cd-lbl">SEC</div></div>
+      <img src="https://images.unsplash.com/photo-1638730558978-18941cc086ad?w=800&q=80" alt="McLaren 720S">
+      <div class="p-card-body">
+        <h3 class="p-card-title">McLaren 720S Spider</h3>
+        <p class="p-card-sub">$299,000 value — only 770 tickets!</p>
+        <div class="p-card-row">
+          <div class="p-card-gauge">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="#1a1a2e" stroke-width="4"/><circle cx="24" cy="24" r="20" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="87.96" style="transform:rotate(-90deg);transform-origin:center;"/></svg>
+            <span class="p-card-gauge-text">30%</span>
           </div>
-          <div class="p-prices">
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$285k</div><div class="p-price-lbl">Car Value</div></div></div>
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$199</div><div class="p-price-lbl">Entry Price</div></div></div>
+          <div class="p-card-stats">
+            <div><div class="p-card-stat-label">Tickets</div><div class="p-card-stat-value">231 / 770</div></div>
+            <div><div class="p-card-stat-label">Odds</div><div class="p-card-stat-value">1 in 770</div></div>
+            <div><div class="p-card-stat-label">Entry</div><div class="p-card-stat-value">$249</div></div>
           </div>
         </div>
-        <p class="p-italic">or until all tickets are sold out. But never after the draw date</p>
-      </div>
-      <div class="p-bottom">
-        <div class="p-tickets"><span class="p-tickets-num">2,900</span><span class="p-tickets-lbl">MAXIMUM TICKETS</span></div>
-        <a href="site_tirage.html" class="p-btn">Get your ticket <span class="p-btn-arrow">→</span></a>
+        <div class="p-card-bottom">
+          <div class="p-card-countdown">
+            <span data-unit="days">12</span>d
+            <span data-unit="hours">08</span>h
+            <span data-unit="min">33</span>m
+          </div>
+          <a href="site_tirage.html" class="p-card-btn">Enter →</a>
+        </div>
       </div>
     </div>
 
-    <!-- Card 4 — LIVE -->
-    <div class="p-card">
-      <img src="https://images.unsplash.com/photo-1638730558978-18941cc086ad?w=1200&h=800&fit=crop&crop=center" alt="McLaren 720S">
-      <div class="p-info">
-        <div class="p-info-top">
-          <h2 class="p-title">MCLAREN 720S SPIDER</h2>
-          <p class="p-sub">Only 770 Chances! Best Odds You'll Ever Get!</p>
-        </div>
-        <div class="p-row">
-          <div class="p-countdown">
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="days">12</div><div class="p-cd-lbl">DAY</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="hours">08</div><div class="p-cd-lbl">HOUR</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="min">34</div><div class="p-cd-lbl">MIN</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="sec">51</div><div class="p-cd-lbl">SEC</div></div>
-          </div>
-          <div class="p-prices">
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$299k</div><div class="p-price-lbl">Car Value</div></div></div>
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$249</div><div class="p-price-lbl">Entry Price</div></div></div>
-          </div>
-        </div>
-        <p class="p-italic">or until all tickets are sold out. But never after the draw date</p>
-      </div>
-      <div class="p-bottom">
-        <div class="p-tickets"><span class="p-tickets-num">770</span><span class="p-tickets-lbl">MAXIMUM TICKETS</span></div>
-        <a href="site_tirage.html" class="p-btn">Get your ticket <span class="p-btn-arrow">→</span></a>
-      </div>
-    </div>
-
-    <!-- Card 5 — LIVE -->
-    <div class="p-card">
-      <img src="https://images.unsplash.com/photo-1573593612929-45d67798b534?w=1200&h=800&fit=crop&crop=center" alt="Aston Martin DB11">
-      <div class="p-info">
-        <div class="p-info-top">
-          <h2 class="p-title">ASTON MARTIN DB11 V12</h2>
-          <p class="p-sub">450 TOTAL TICKETS= Unbeatable Opportunity!</p>
-        </div>
-        <div class="p-row">
-          <div class="p-countdown">
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="days">12</div><div class="p-cd-lbl">DAY</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="hours">08</div><div class="p-cd-lbl">HOUR</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="min">34</div><div class="p-cd-lbl">MIN</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="sec">51</div><div class="p-cd-lbl">SEC</div></div>
-          </div>
-          <div class="p-prices">
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$230k</div><div class="p-price-lbl">Car Value</div></div></div>
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$349</div><div class="p-price-lbl">Entry Price</div></div></div>
-          </div>
-        </div>
-        <p class="p-italic">or until all tickets are sold out. But never after the draw date</p>
-      </div>
-      <div class="p-bottom">
-        <div class="p-tickets"><span class="p-tickets-num">450</span><span class="p-tickets-lbl">MAXIMUM TICKETS</span></div>
-        <a href="site_tirage.html" class="p-btn">Get your ticket <span class="p-btn-arrow">→</span></a>
-      </div>
-    </div>
-
-    <!-- Card 6 — LIVE -->
-    <div class="p-card">
-      <img src="https://images.unsplash.com/photo-1682242288217-2c188bd79f0a?w=1200&h=800&fit=crop&crop=center" alt="BMW M4 Competition">
-      <div class="p-info">
-        <div class="p-info-top">
-          <h2 class="p-title">BMW M4 COMPETITION</h2>
-          <p class="p-sub">INSANE DEAL on this M4!</p>
-        </div>
-        <div class="p-row">
-          <div class="p-countdown">
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="days">12</div><div class="p-cd-lbl">DAY</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="hours">08</div><div class="p-cd-lbl">HOUR</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="min">34</div><div class="p-cd-lbl">MIN</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val" data-unit="sec">51</div><div class="p-cd-lbl">SEC</div></div>
-          </div>
-          <div class="p-prices">
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$89k</div><div class="p-price-lbl">Car Value</div></div></div>
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$79</div><div class="p-price-lbl">Entry Price</div></div></div>
-          </div>
-        </div>
-        <p class="p-italic">or until all tickets are sold out. But never after the draw date</p>
-      </div>
-      <div class="p-bottom">
-        <div class="p-tickets"><span class="p-tickets-num">1,350</span><span class="p-tickets-lbl">MAXIMUM TICKETS</span></div>
-        <a href="site_tirage.html" class="p-btn">Get your ticket <span class="p-btn-arrow">→</span></a>
-      </div>
-    </div>
-
-    <!-- Card 7 — SOLD OUT -->
+    <!-- Card 4 — SOLD OUT -->
     <div class="p-card sold-out">
-      <div class="sold-badge">SOLD OUT</div>
-      <img src="https://images.unsplash.com/photo-1617650728468-8581e439c864?w=1200&h=800&fit=crop&crop=center" alt="Lamborghini Aventador SVJ">
-      <div class="p-info">
-        <div class="p-info-top">
-          <h2 class="p-title">WINNER TAKES ALL!</h2>
-          <p class="p-sub">Lamborghini Aventador SVJ + Cash Prize!</p>
-        </div>
-        <div class="p-row">
-          <div class="p-countdown">
-            <div class="p-cd-unit"><div class="p-cd-val">00</div><div class="p-cd-lbl">DAY</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val">00</div><div class="p-cd-lbl">HOUR</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val">00</div><div class="p-cd-lbl">MIN</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val">00</div><div class="p-cd-lbl">SEC</div></div>
+      <img src="https://images.unsplash.com/photo-1617650728468-8581e439c864?w=800&q=80" alt="Lamborghini Aventador SVJ">
+      <div class="p-card-body">
+        <div class="sold-badge">Sold out</div>
+        <h3 class="p-card-title">Lamborghini Aventador SVJ</h3>
+        <p class="p-card-sub">$420,000 value — Winner: James M.</p>
+        <div class="p-card-row">
+          <div class="p-card-gauge">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="#1a1a2e" stroke-width="4"/><circle cx="24" cy="24" r="20" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="0" style="transform:rotate(-90deg);transform-origin:center;"/></svg>
+            <span class="p-card-gauge-text">100%</span>
           </div>
-          <div class="p-prices">
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$420k</div><div class="p-price-lbl">Car Value</div></div></div>
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$349</div><div class="p-price-lbl">Entry Price</div></div></div>
+          <div class="p-card-stats">
+            <div><div class="p-card-stat-label">Tickets</div><div class="p-card-stat-value">800 / 800</div></div>
+            <div><div class="p-card-stat-label">Odds</div><div class="p-card-stat-value">1 in 800</div></div>
+            <div><div class="p-card-stat-label">Entry</div><div class="p-card-stat-value">$349</div></div>
           </div>
         </div>
-        <p class="p-italic">or until all tickets are sold out. But never after the draw date</p>
-      </div>
-      <div class="p-bottom">
-        <div class="p-tickets"><span class="p-tickets-num">800</span><span class="p-tickets-lbl">MAXIMUM TICKETS</span></div>
-        <span class="p-btn">Tickets sold out</span>
-      </div>
-    </div>
-
-    <!-- Card 8 — SOLD OUT -->
-    <div class="p-card sold-out">
-      <div class="sold-badge">SOLD OUT</div>
-      <img src="https://images.unsplash.com/photo-1666790995628-9b55f65cdeeb?w=1200&h=800&fit=crop&crop=center" alt="Ferrari Roma">
-      <div class="p-info">
-        <div class="p-info-top">
-          <h2 class="p-title">FERRARI ROMA COUPE</h2>
-          <p class="p-sub">EXCLUSIVE! THE ALL NEW ROMA!</p>
+        <div class="p-card-bottom">
+          <div class="p-card-countdown" style="color: var(--red);">Completed</div>
+          <span class="p-card-btn" style="background:#333;cursor:default;">Sold out</span>
         </div>
-        <div class="p-row">
-          <div class="p-countdown">
-            <div class="p-cd-unit"><div class="p-cd-val">00</div><div class="p-cd-lbl">DAY</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val">00</div><div class="p-cd-lbl">HOUR</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val">00</div><div class="p-cd-lbl">MIN</div></div>
-            <div class="p-cd-sep"></div>
-            <div class="p-cd-unit"><div class="p-cd-val">00</div><div class="p-cd-lbl">SEC</div></div>
-          </div>
-          <div class="p-prices">
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$245k</div><div class="p-price-lbl">Car Value</div></div></div>
-            <div class="p-price"><div class="p-price-bar"></div><div><div class="p-price-val">$199</div><div class="p-price-lbl">Entry Price</div></div></div>
-          </div>
-        </div>
-        <p class="p-italic">or until all tickets are sold out. But never after the draw date</p>
-      </div>
-      <div class="p-bottom">
-        <div class="p-tickets"><span class="p-tickets-num">999</span><span class="p-tickets-lbl">MAXIMUM TICKETS</span></div>
-        <span class="p-btn">Tickets sold out</span>
       </div>
     </div>
 
@@ -1423,142 +1300,82 @@ footer {
 
 <!-- MISSION -->
 <section class="mission">
-  <div>
-    <h2 class="mission-title">WINUSUPERCARS IS A GAME OF SKILL AND KNOWLEDGE</h2>
-    <p class="mission-goal">OUR GOAL IS<br>FOR <span class="green">EVERYONE</span><br><span class="green">TO WIN</span></p>
-    <p class="mission-dream">THE SUPERCAR OF THEIR DREAMS.</p>
-  </div>
-  <div>
-    <p class="mission-desc">WE'VE GIVEN AWAY $2,800,000 WORTH OF SUPERCARS. Top-Ranked Globally for Unbeatable Winning Chances.</p>
-  </div>
+  <h2 class="mission-title">We've given away <span class="green">$4.2 million</span> in supercars.<br>Real winners. Real cars. <span class="green">Real odds.</span></h2>
+  <p class="mission-desc">Win U Supercars is a game of skill and knowledge. Our goal is for everyone to have a real shot at winning the supercar of their dreams. Based in Miami, FL — we source the finest supercars and deliver them to your door.</p>
 </section>
 
-<!-- WINNERS CAROUSEL -->
+<!-- WINNERS -->
 <section class="winners">
   <div class="section-header">
-    <h2 class="section-title">RECENT <span class="green">WINNERS</span></h2>
+    <h2 class="section-title">Recent winners</h2>
   </div>
   <div class="winners-scroll">
     <div class="w-card">
       <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face" alt="Winner">
-      <div class="w-overlay">
-        <div><div class="w-name">James M.</div><div class="w-prize">Ferrari 488 GTB</div></div>
-        <div><div class="w-val">$285k</div><div class="w-val-lbl">Value</div></div>
-      </div>
+      <div class="w-overlay"><div><div class="w-name">James M.</div><div class="w-prize">Ferrari 488 GTB</div></div><div class="w-val">$285k</div></div>
     </div>
     <div class="w-card">
       <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop&crop=face" alt="Winner">
-      <div class="w-overlay">
-        <div><div class="w-name">Sarah K.</div><div class="w-prize">McLaren 720S</div></div>
-        <div><div class="w-val">$299k</div><div class="w-val-lbl">Value</div></div>
-      </div>
+      <div class="w-overlay"><div><div class="w-name">Sarah K.</div><div class="w-prize">McLaren 720S</div></div><div class="w-val">$299k</div></div>
     </div>
     <div class="w-card">
       <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop&crop=face" alt="Winner">
-      <div class="w-overlay">
-        <div><div class="w-name">David R.</div><div class="w-prize">Porsche 911 Turbo S</div></div>
-        <div><div class="w-val">$230k</div><div class="w-val-lbl">Value</div></div>
-      </div>
+      <div class="w-overlay"><div><div class="w-name">David R.</div><div class="w-prize">Porsche 911 Turbo S</div></div><div class="w-val">$230k</div></div>
     </div>
     <div class="w-card">
       <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=face" alt="Winner">
-      <div class="w-overlay">
-        <div><div class="w-name">Michael T.</div><div class="w-prize">Lamborghini Urus</div></div>
-        <div><div class="w-val">$240k</div><div class="w-val-lbl">Value</div></div>
-      </div>
+      <div class="w-overlay"><div><div class="w-name">Michael T.</div><div class="w-prize">Lamborghini Urus</div></div><div class="w-val">$240k</div></div>
     </div>
     <div class="w-card">
       <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=500&fit=crop&crop=face" alt="Winner">
-      <div class="w-overlay">
-        <div><div class="w-name">Emma L.</div><div class="w-prize">Porsche Cayenne Turbo</div></div>
-        <div><div class="w-val">$185k</div><div class="w-val-lbl">Value</div></div>
-      </div>
+      <div class="w-overlay"><div><div class="w-name">Emma L.</div><div class="w-prize">Porsche Cayenne Turbo</div></div><div class="w-val">$185k</div></div>
     </div>
     <div class="w-card">
       <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop&crop=face" alt="Winner">
-      <div class="w-overlay">
-        <div><div class="w-name">Alex B.</div><div class="w-prize">Ferrari F8 Tributo</div></div>
-        <div><div class="w-val">$310k</div><div class="w-val-lbl">Value</div></div>
-      </div>
+      <div class="w-overlay"><div><div class="w-name">Alex B.</div><div class="w-prize">Ferrari F8 Tributo</div></div><div class="w-val">$310k</div></div>
     </div>
   </div>
   <div class="winners-nav">
     <button id="scrollLeft">&#8592;</button>
-    <a href="site_gagnants.html" class="btn-green">View all winners</a>
+    <a href="site_gagnants.html" class="btn-outline">View all winners</a>
     <button id="scrollRight">&#8594;</button>
   </div>
 </section>
 
 <!-- HOW TO ENTER -->
 <section class="how-section">
-  <div class="how-top">
-    <h2 class="how-title"><span class="green">HOW TO</span><br>ENTER THE<br>COMPETITION</h2>
-    <p class="how-desc">Get a chance to win the next contest and get your dream supercar. No matter how many tickets are sold, the competition will take place and there will be a winner. The date of the competition cannot be postponed; however, it can be moved up in case of a sold-out event.</p>
-  </div>
+  <h2 class="how-title"><span class="green">How to</span> enter the competition</h2>
   <div class="how-steps">
     <div class="how-step">
-      <div class="how-step-icon">&#127942;</div>
+      <div class="how-step-num">1</div>
       <div class="how-step-name">Choose</div>
-      <div class="how-step-desc">Choose how many tickets you want (Up to 50 per player) and get ready to own a supercar.</div>
+      <div class="how-step-desc">Choose how many tickets you want (up to 50 per player) and pick your supercar.</div>
     </div>
     <div class="how-step">
-      <div class="how-step-icon">&#9654;</div>
+      <div class="how-step-num">2</div>
       <div class="how-step-name">Play</div>
       <div class="how-step-desc">Test your supercar expertise with our online game, crafted to separate the true connoisseurs.</div>
     </div>
     <div class="how-step">
-      <div class="how-step-icon">&#128274;</div>
+      <div class="how-step-num">3</div>
       <div class="how-step-name">Buy</div>
-      <div class="how-step-desc">Pay Safely to Enter. Our partner uses a third-party Random Number Generator for impartial selection.</div>
+      <div class="how-step-desc">Pay safely to enter. Our partner uses a third-party Random Number Generator for impartial selection.</div>
     </div>
     <div class="how-step">
-      <div class="how-step-icon">&#128101;</div>
-      <div class="how-step-name">Win your supercar</div>
-      <div class="how-step-desc">That's all there is to it! With a minimal entry, you could be the lucky winner of a brand-new supercar.</div>
+      <div class="how-step-num">4</div>
+      <div class="how-step-name">Win</div>
+      <div class="how-step-desc">That's all there is to it! You could be the lucky winner of a brand-new supercar.</div>
     </div>
   </div>
   <div class="how-cta">
-    <a href="site_tirage.html" class="btn-green">Join the next competition</a>
-  </div>
-</section>
-
-<!-- OUR COMMUNITY HAS WON -->
-<section class="community">
-  <div class="community-head">
-    <h2 class="community-title">Our community<br><span class="green">has won</span></h2>
-    <p class="community-desc">We take pride in curating a collection of supercars that embody performance and luxury, sourced from a network of certified dealers across the world.</p>
-  </div>
-  <div class="community-grid">
-    <div class="c-card">
-      <img src="https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=400&h=300&fit=crop&crop=center" alt="Huracan">
-      <div class="c-card-body"><div class="c-card-name">Best Ever HURACAN odds</div><div class="c-card-date">Won 15.05.2026</div><div class="c-card-val">$261k</div><div class="c-card-lbl">Value</div></div>
-    </div>
-    <div class="c-card">
-      <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=400&h=300&fit=crop&crop=center" alt="GT3">
-      <div class="c-card-body"><div class="c-card-name">The Prize: $197K! Insane COMP</div><div class="c-card-date">Won 12.05.2026</div><div class="c-card-val">$197k</div><div class="c-card-lbl">Value</div></div>
-    </div>
-    <div class="c-card">
-      <img src="https://images.unsplash.com/photo-1616411501431-330ddc944cad?w=400&h=300&fit=crop&crop=center" alt="488 GTB">
-      <div class="c-card-body"><div class="c-card-name">Ferrari 488 GTB</div><div class="c-card-date">Won 10.05.2026</div><div class="c-card-val">$285k</div><div class="c-card-lbl">Value</div></div>
-    </div>
-    <div class="c-card">
-      <img src="https://images.unsplash.com/photo-1638730558978-18941cc086ad?w=400&h=300&fit=crop&crop=center" alt="McLaren">
-      <div class="c-card-body"><div class="c-card-name">McLaren 720S Spider</div><div class="c-card-date">Won 08.05.2026</div><div class="c-card-val">$299k</div><div class="c-card-lbl">Value</div></div>
-    </div>
-    <div class="c-card">
-      <img src="https://images.unsplash.com/photo-1573593612929-45d67798b534?w=400&h=300&fit=crop&crop=center" alt="Aston Martin">
-      <div class="c-card-body"><div class="c-card-name">Aston Martin DB11</div><div class="c-card-date">Won 05.05.2026</div><div class="c-card-val">$230k</div><div class="c-card-lbl">Value</div></div>
-    </div>
+    <a href="site_tirage.html" class="btn-outline">Join the next competition</a>
   </div>
 </section>
 
 <!-- THE PADDOCK — FEED -->
 <section class="feed-section">
-  <div class="feed-intro">
-    <h2 class="feed-passion">Because we love<br><span class="green">everything about supercars</span></h2>
-    <p class="feed-subtitle">Whether you're a seasoned car enthusiast or just beginning your journey into the world of supercars, our feed is designed to keep you informed and inspired.</p>
-  </div>
-  <div class="feed-list">
+  <h2 class="feed-title">From the Paddock</h2>
+  <div>
     <a href="site_paddock.html" class="feed-item">
       <div class="feed-item-title">Why the Huracan EVO is Lamborghini's most driver-focused supercar</div>
       <div class="feed-item-date">16.05.2026</div>
@@ -1575,36 +1392,9 @@ footer {
       <div class="feed-item-title">Aventador SVJ: the last of the naturally aspirated V12 warriors</div>
       <div class="feed-item-date">09.05.2026</div>
     </a>
-    <a href="site_paddock.html" class="feed-item">
-      <div class="feed-item-title">Ferrari Roma: understated elegance in a world of excess</div>
-      <div class="feed-item-date">06.05.2026</div>
-    </a>
-    <a href="site_paddock.html" class="feed-item">
-      <div class="feed-item-title">Porsche 911 GT3: the track weapon that doubles as a daily driver</div>
-      <div class="feed-item-date">03.05.2026</div>
-    </a>
   </div>
   <div class="feed-more-wrap">
-    <a href="site_paddock.html" class="feed-more">Explore The Paddock</a>
-  </div>
-</section>
-
-<!-- COMMUNITY CTA -->
-<section class="community-cta">
-  <div class="community-cta-inner">
-    <div class="community-cta-grid">
-      <div class="community-cta-card cta-trustpilot">
-        <div class="community-cta-label">Dear community, share your experience on</div>
-        <div class="community-cta-title">We are hungry for your feedbacks</div>
-        <a href="#" class="community-cta-btn">Give your feedback now</a>
-      </div>
-      <div class="community-cta-card cta-instagram">
-        <div class="community-cta-label">Join our community on</div>
-        <div class="community-cta-title">Follow us on Instagram</div>
-        <a href="#" class="community-cta-btn">Follow Us</a>
-        <div class="community-cta-count">Join our growing community</div>
-      </div>
-    </div>
+    <a href="site_paddock.html" class="btn-outline">Explore The Paddock</a>
   </div>
 </section>
 
@@ -1613,7 +1403,7 @@ footer {
   <div class="footer-inner">
     <div>
       <div class="footer-logo">WINUSUPERCARS</div>
-      <p class="footer-tagline">Premium supercar competitions.<br>Based in Miami, FL.</p>
+      <p class="footer-tagline">Premium supercar sweepstakes.<br>Based in Miami, FL.</p>
     </div>
     <div class="footer-links">
       <a href="site_home.html">Home</a>
@@ -1643,8 +1433,8 @@ footer {
 <script>
 // Hamburger
 (function() {
-  const h = document.getElementById('hamburger');
-  const m = document.getElementById('mobileMenu');
+  var h = document.getElementById('hamburger');
+  var m = document.getElementById('mobileMenu');
   h.addEventListener('click', function() {
     h.classList.toggle('active');
     m.classList.toggle('active');
@@ -1661,25 +1451,26 @@ footer {
 
 // Countdown
 (function() {
-  const target = new Date();
+  var target = new Date();
   target.setDate(target.getDate() + 12);
   target.setHours(target.getHours() + 8);
-  target.setMinutes(target.getMinutes() + 34);
-
+  target.setMinutes(target.getMinutes() + 33);
   function pad(n) { return n.toString().padStart(2, '0'); }
-
   function update() {
-    const now = new Date();
-    let diff = Math.max(0, Math.floor((target - now) / 1000));
-    const d = Math.floor(diff / 86400); diff %= 86400;
-    const h = Math.floor(diff / 3600); diff %= 3600;
-    const m = Math.floor(diff / 60);
-    const s = diff % 60;
-
-    document.querySelectorAll('[data-unit="days"]').forEach(el => el.textContent = pad(d));
-    document.querySelectorAll('[data-unit="hours"]').forEach(el => el.textContent = pad(h));
-    document.querySelectorAll('[data-unit="min"]').forEach(el => el.textContent = pad(m));
-    document.querySelectorAll('[data-unit="sec"]').forEach(el => el.textContent = pad(s));
+    var now = new Date();
+    var diff = Math.max(0, Math.floor((target - now) / 1000));
+    var d = Math.floor(diff / 86400); diff %= 86400;
+    var hr = Math.floor(diff / 3600); diff %= 3600;
+    var mn = Math.floor(diff / 60);
+    var sc = diff % 60;
+    document.getElementById('cd-days').textContent = pad(d);
+    document.getElementById('cd-hours').textContent = pad(hr);
+    document.getElementById('cd-min').textContent = pad(mn);
+    document.getElementById('cd-sec').textContent = pad(sc);
+    // Also update card countdowns
+    document.querySelectorAll('[data-unit="days"]').forEach(function(el) { el.textContent = pad(d); });
+    document.querySelectorAll('[data-unit="hours"]').forEach(function(el) { el.textContent = pad(hr); });
+    document.querySelectorAll('[data-unit="min"]').forEach(function(el) { el.textContent = pad(mn); });
   }
   update();
   setInterval(update, 1000);
@@ -1687,12 +1478,36 @@ footer {
 
 // Winners scroll
 (function() {
-  const scroll = document.querySelector('.winners-scroll');
+  var scroll = document.querySelector('.winners-scroll');
   document.getElementById('scrollLeft').addEventListener('click', function() {
-    scroll.scrollBy({ left: -300, behavior: 'smooth' });
+    scroll.scrollBy({ left: -260, behavior: 'smooth' });
   });
   document.getElementById('scrollRight').addEventListener('click', function() {
-    scroll.scrollBy({ left: 300, behavior: 'smooth' });
+    scroll.scrollBy({ left: 260, behavior: 'smooth' });
+  });
+})();
+
+// Dynamic odds on ticket pack selection
+(function() {
+  document.querySelectorAll('.t-pack').forEach(function(pack) {
+    pack.addEventListener('click', function() {
+      document.querySelectorAll('.t-pack').forEach(function(p) {
+        p.classList.remove('active');
+        p.style.borderColor = '';
+        p.style.borderWidth = '';
+      });
+      this.classList.add('active');
+      var t = this.dataset.t;
+      var o = this.dataset.o;
+      var n = this.dataset.n;
+      document.getElementById('odds-tc').textContent = t + (t === '1' ? ' ticket' : ' tickets');
+      document.getElementById('odds-val').textContent = o;
+      document.getElementById('odds-note').textContent = n;
+      // Flash effect on odds box
+      var box = document.getElementById('odds-box');
+      box.style.borderColor = '#22c55e';
+      setTimeout(function() { box.style.borderColor = ''; }, 800);
+    });
   });
 })();
 </script>
