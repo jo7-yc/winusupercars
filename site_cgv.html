@@ -6,13 +6,19 @@
 <title>Terms &amp; Conditions — WIN U SUPERCARS</title>
 <style>
 :root {
-  --bg: #FFFFFF;
-  --text: #111111;
-  --text-muted: #888888;
-  --green: #114F33;
-  --green-light: #005128;
-  --green-bright: #22c55e;
-  --border: #E5E5E5;
+  --bg: #09090b;
+  --bg-card: #111116;
+  --bg-surface: #0f0f11;
+  --text: #ffffff;
+  --text-muted: #71717a;
+  --text-dim: #52525b;
+  --text-hint: #3f3f46;
+  --green: #22c55e;
+  --green-dark: #16a34a;
+  --amber: #f59e0b;
+  --red: #ef4444;
+  --border: #1c1c24;
+  --border-light: #27272a;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,32 +32,6 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
-/* ── TOP BANNER ── */
-.top-banner {
-  background: #000;
-  color: #fff;
-  text-align: center;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.top-banner .apple-pay-icon {
-  display: inline-flex;
-  align-items: center;
-  background: #fff;
-  color: #000;
-  border-radius: 4px;
-  padding: 2px 8px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-}
-
 /* ── NAV ── */
 nav {
   position: sticky;
@@ -59,59 +39,77 @@ nav {
   z-index: 1000;
   display: flex;
   align-items: center;
-  padding: 0 40px;
-  height: 86px;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 72px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-left {
+  display: flex;
+  gap: 32px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.nav-left a { transition: color 0.2s; }
+.nav-left a:hover { color: var(--green); }
+
+.nav-divider-left, .nav-divider-right {
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+  margin: 0 24px;
 }
 
 .logo {
-  font-size: 16px;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  background: var(--green);
-  color: #fff;
-  padding: 8px 14px;
-  margin-right: 40px;
-  white-space: nowrap;
-}
-
-.nav-links {
-  display: flex;
-  gap: 24px;
-  flex: 1;
-}
-
-.nav-links a {
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 6px;
   color: var(--text);
-  transition: color 0.2s;
   white-space: nowrap;
 }
-
-.nav-links a:hover { color: var(--green); }
 
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-left: auto;
-  white-space: nowrap;
+  gap: 28px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
-.nav-lang { font-size: 14px; font-weight: 500; color: var(--green); cursor: pointer; }
-.nav-auth { font-size: 14px; font-weight: 500; color: var(--text); }
-.nav-auth a { transition: color 0.2s; }
-.nav-auth a:hover { color: var(--green); }
-.nav-cart { width: 20px; height: 20px; cursor: pointer; }
+.nav-right a { color: var(--text); transition: color 0.2s; }
+.nav-right a:hover { color: var(--green); }
+
+.btn-enter {
+  background: var(--green);
+  color: #000;
+  padding: 9px 22px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+
+.btn-enter:hover { background: var(--green-dark); }
+
+/* Mobile nav */
+.nav-left-icons, .nav-right-icons { display: none; align-items: center; gap: 16px; }
+.nav-icon { width: 22px; height: 22px; cursor: pointer; color: var(--text); }
 
 .hamburger {
   display: none;
   flex-direction: column;
   gap: 5px;
-  width: 28px;
-  height: 28px;
+  width: 24px;
   cursor: pointer;
   background: none;
   border: none;
@@ -119,14 +117,7 @@ nav {
   z-index: 1002;
 }
 
-.hamburger span {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: var(--text);
-  transition: all 0.3s;
-}
-
+.hamburger span { display: block; width: 100%; height: 2px; background: var(--text); transition: all 0.3s; }
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
@@ -134,9 +125,9 @@ nav {
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 86px;
+  top: 72px;
   left: 0; right: 0; bottom: 0;
-  background: #fff;
+  background: var(--bg);
   z-index: 999;
   flex-direction: column;
   align-items: center;
@@ -145,7 +136,7 @@ nav {
 }
 
 .mobile-menu.active { display: flex; }
-.mobile-menu a { font-size: 18px; font-weight: 600; color: var(--text); }
+.mobile-menu a { font-size: 18px; font-weight: 500; color: var(--text); }
 .mobile-menu a:hover { color: var(--green); }
 
 /* ── PAGE HERO ── */
@@ -173,7 +164,7 @@ nav {
 
 .page-hero .update-date {
   font-size: 14px;
-  color: var(--text-muted);
+  color: var(--text-dim);
   margin-top: 8px;
 }
 
@@ -182,7 +173,8 @@ nav {
   max-width: 900px;
   margin: 0 auto 48px;
   padding: 32px 40px;
-  background: #f8f8f8;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 8px;
 }
 
@@ -209,7 +201,7 @@ nav {
 }
 
 .toc ol li a {
-  color: #555;
+  color: var(--text-muted);
   font-size: 15px;
   font-weight: 500;
   transition: color 0.2s;
@@ -264,7 +256,7 @@ nav {
 .article p {
   font-size: 15px;
   font-weight: 400;
-  color: #555;
+  color: var(--text-muted);
   line-height: 1.8;
   margin-bottom: 14px;
 }
@@ -280,7 +272,7 @@ nav {
 .article ul li {
   font-size: 15px;
   font-weight: 400;
-  color: #555;
+  color: var(--text-muted);
   line-height: 1.8;
   padding-left: 18px;
   position: relative;
@@ -315,30 +307,31 @@ nav {
 
 /* ── FOOTER ── */
 footer {
-  background: #fff;
-  border-top: 1px solid #eee;
-  padding: 60px 48px 32px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  padding: 48px 48px 24px;
 }
 
 .footer-inner {
   max-width: 1400px;
-  margin: 0 auto 40px;
+  margin: 0 auto 32px;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   gap: 48px;
 }
 
 .footer-logo {
-  font-size: 16px;
-  font-weight: 900;
-  background: var(--green);
-  color: #fff;
-  padding: 6px 12px;
-  display: inline-block;
-  margin-bottom: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
 }
 
-.footer-tagline { font-size: 13px; color: #999; line-height: 1.6; }
+.footer-tagline {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
 
 .footer-links {
   display: grid;
@@ -346,102 +339,117 @@ footer {
   gap: 10px 40px;
 }
 
-.footer-links a { font-size: 14px; font-weight: 500; color: #555; transition: color 0.2s; }
+.footer-links a {
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
 .footer-links a:hover { color: var(--green); }
 
 .footer-contact { text-align: right; }
-.footer-email { font-size: 13px; color: #999; margin-bottom: 12px; }
+
+.footer-email {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
 
 .footer-socials {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 8px;
 }
 
 .footer-socials a {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
-  color: #999;
+  font-size: 11px;
+  color: var(--text-muted);
   transition: all 0.2s;
 }
 
-.footer-socials a:hover { background: var(--green); border-color: var(--green); color: #fff; }
+.footer-socials a:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: #000;
+}
 
 .footer-bottom {
   text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
 }
 
-.footer-copy { font-size: 12px; color: #999; }
+.footer-copy { font-size: 11px; color: var(--text-dim); }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .footer-inner { grid-template-columns: 1fr; text-align: center; }
+  .footer-contact { text-align: center; }
+  .footer-socials { justify-content: center; }
+  .footer-links { justify-items: center; }
+}
+
 @media (max-width: 768px) {
   .hamburger { display: flex; }
-  .nav-links, .nav-right { display: none; }
+  .nav-left, .nav-right { display: none; }
+  .nav-left-icons, .nav-right-icons { display: flex; }
   nav { padding: 0 16px; height: 56px; }
-  .logo { font-size: 14px; padding: 6px 12px; margin-right: 0; }
-  .top-banner { font-size: 12px; padding: 8px 16px; }
+  .logo { font-size: 15px; letter-spacing: 3px; }
   .mobile-menu { top: 56px; }
   .page-hero { padding: 50px 20px 40px; }
   .page-hero h1 { font-size: 28px; }
   .legal-content { padding: 0 20px 60px; }
   .toc { margin: 0 20px 40px; padding: 24px 20px; }
   .toc ol { columns: 1; }
-  footer { padding: 40px 20px 20px; }
-  .footer-inner { grid-template-columns: 1fr; text-align: center; }
-  .footer-contact { text-align: center; }
-  .footer-socials { justify-content: center; }
-  .footer-links { justify-items: center; }
+  footer { padding: 32px 16px 16px; }
+  .footer-links { grid-template-columns: 1fr; gap: 10px; }
 }
 </style>
 </head>
 <body>
 
-<!-- TOP BANNER -->
-<div class="top-banner">
-  <span class="apple-pay-icon">Pay</span>
-  Apple Pay is available on winusupercars!
-</div>
-
 <!-- NAV -->
 <nav>
-  <a href="site_home.html" class="logo">WINUSUPERCARS</a>
-  <div class="nav-links">
-    <a href="site_comment.html">How to play</a>
+  <div class="nav-left-icons">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 0 0 6 8"/><rect x="3" y="8" width="18" height="14" rx="2"/></svg>
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+  </div>
+  <div class="nav-left">
+    <a href="site_comment.html">How it works</a>
     <a href="site_gagnants.html">Winners</a>
-    <a href="#">Feed</a>
-    <a href="site_faq.html">Faq</a>
-    <a href="site_mentions.html">About us</a>
-    <a href="#">Contact us</a>
+    <a href="site_paddock.html">The Paddock</a>
   </div>
+  <div class="nav-divider-left"></div>
+  <a href="site_home.html" class="logo">WIN U SUPERCARS</a>
+  <div class="nav-divider-right"></div>
   <div class="nav-right">
-    <span class="nav-lang">English &#9662;</span>
-    <span class="nav-auth"><a href="#">Login</a> | <a href="#">Register</a></span>
-    <svg class="nav-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8"/><rect x="3" y="8" width="18" height="14" rx="2"/></svg>
+    <a href="site_faq.html">FAQ</a>
+    <a href="#">Login</a>
+    <a href="site_tirage.html" class="btn-enter">Enter now</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right-icons">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="site_comment.html">How to play</a>
+  <a href="site_comment.html">How it works</a>
   <a href="site_gagnants.html">Winners</a>
-  <a href="#">Feed</a>
-  <a href="site_faq.html">Faq</a>
+  <a href="site_paddock.html">The Paddock</a>
+  <a href="site_faq.html">FAQ</a>
   <a href="site_mentions.html">About us</a>
-  <a href="#">Contact us</a>
   <a href="#">Login</a>
-  <a href="#">Register</a>
 </div>
 
 <!-- PAGE HERO -->
@@ -627,8 +635,8 @@ footer {
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-logo">WINUSUPERCARS</div>
-      <p class="footer-tagline">Premium supercar competitions.<br>Based in Miami, FL.</p>
+      <div class="footer-logo">WIN U SUPERCARS</div>
+      <p class="footer-tagline">Premium supercar sweepstakes.<br>Based in Miami, FL.</p>
     </div>
     <div class="footer-links">
       <a href="site_home.html">Home</a>
@@ -657,8 +665,8 @@ footer {
 
 <script>
 (function() {
-  const h = document.getElementById('hamburger');
-  const m = document.getElementById('mobileMenu');
+  var h = document.getElementById('hamburger');
+  var m = document.getElementById('mobileMenu');
   h.addEventListener('click', function() {
     h.classList.toggle('active');
     m.classList.toggle('active');

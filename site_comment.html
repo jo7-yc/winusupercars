@@ -3,16 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Play — WIN U SUPERCARS</title>
+<title>How It Works — WIN U SUPERCARS</title>
 <style>
 :root {
-  --bg: #FFFFFF;
-  --text: #111111;
-  --text-muted: #888888;
-  --green: #114F33;
-  --green-light: #005128;
-  --green-bright: #22c55e;
-  --border: #E5E5E5;
+  --bg: #09090b; --bg-card: #111116; --bg-surface: #0f0f11;
+  --text: #ffffff; --text-muted: #71717a; --text-dim: #52525b; --text-hint: #3f3f46;
+  --green: #22c55e; --green-dark: #16a34a; --amber: #f59e0b; --red: #ef4444;
+  --border: #1c1c24; --border-light: #27272a;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,596 +23,252 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
-/* ── TOP BANNER ── */
-.top-banner {
-  background: #000;
-  color: #fff;
-  text-align: center;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.top-banner .apple-pay-icon {
-  display: inline-flex;
-  align-items: center;
-  background: #fff;
-  color: #000;
-  border-radius: 4px;
-  padding: 2px 8px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-}
-
 /* ── NAV ── */
 nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  padding: 0 40px;
-  height: 86px;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  position: sticky; top: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 72px;
+  background: var(--bg); border-bottom: 1px solid var(--border);
 }
-
-.logo {
-  font-size: 16px;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  background: var(--green);
-  color: #fff;
-  padding: 8px 14px;
-  margin-right: 40px;
-  white-space: nowrap;
+.nav-left {
+  display: flex; gap: 32px;
+  font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text);
 }
-
-.nav-links {
-  display: flex;
-  gap: 24px;
-  flex: 1;
-}
-
-.nav-links a {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text);
-  transition: color 0.2s;
-  white-space: nowrap;
-}
-
-.nav-links a:hover,
-.nav-links a.active { color: var(--green); }
-
+.nav-left a { transition: color 0.2s; } .nav-left a:hover { color: var(--green); }
+.nav-divider-left, .nav-divider-right { flex: 1; height: 1px; background: var(--border-light); margin: 0 24px; }
+.logo { font-size: 18px; font-weight: 700; letter-spacing: 6px; color: var(--text); white-space: nowrap; }
 .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-left: auto;
-  white-space: nowrap;
+  display: flex; align-items: center; gap: 28px;
+  font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
 }
-
-.nav-lang {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--green);
-  cursor: pointer;
+.nav-right a { color: var(--text); transition: color 0.2s; } .nav-right a:hover { color: var(--green); }
+.btn-enter {
+  background: var(--green); color: #000; padding: 9px 22px; border-radius: 6px;
+  font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
 }
-
-.nav-auth {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
-}
-
-.nav-auth a { transition: color 0.2s; }
-.nav-auth a:hover { color: var(--green); }
-
-.nav-cart {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
-
-/* Hamburger */
+.btn-enter:hover { background: var(--green-dark); color: #000; }
+.nav-left-icons, .nav-right-icons { display: none; align-items: center; gap: 16px; }
+.nav-icon { width: 22px; height: 22px; cursor: pointer; color: var(--text); }
 .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  width: 28px;
-  height: 28px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  z-index: 1002;
+  display: none; flex-direction: column; gap: 5px; width: 24px;
+  cursor: pointer; background: none; border: none; padding: 0; z-index: 1002;
 }
-
-.hamburger span {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: var(--text);
-  transition: all 0.3s;
-}
-
+.hamburger span { display: block; width: 100%; height: 2px; background: var(--text); transition: all 0.3s; }
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
-
 .mobile-menu {
-  display: none;
-  position: fixed;
-  top: 86px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #fff;
-  z-index: 999;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
+  display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+  background: var(--bg); z-index: 999;
+  flex-direction: column; align-items: center; justify-content: center; gap: 28px;
 }
-
 .mobile-menu.active { display: flex; }
-
-.mobile-menu a {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text);
-}
-
+.mobile-menu a { font-size: 18px; font-weight: 500; color: var(--text); }
 .mobile-menu a:hover { color: var(--green); }
 
 /* ── PAGE HERO ── */
 .page-hero {
-  padding: 80px 48px 60px;
+  padding: 100px 48px 72px;
   text-align: center;
   background: var(--bg);
-}
-
-.page-hero .label {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 4px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.page-hero h1 {
-  font-size: 48px;
-  font-weight: 900;
-  letter-spacing: -1px;
-  color: var(--text);
-  line-height: 1.1;
-}
-
-.page-hero h1 .green { color: var(--green); }
-
-.page-hero p {
-  max-width: 580px;
-  margin: 20px auto 0;
-  font-size: 16px;
-  font-weight: 400;
-  color: #555;
-  line-height: 1.7;
-}
-
-/* ── STEPS ── */
-.steps-section {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 40px 48px 80px;
-}
-
-.steps-grid {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   position: relative;
 }
+.page-hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 1px; background: var(--border-light);
+}
+.page-hero .label {
+  font-size: 11px; font-weight: 600; letter-spacing: 4px;
+  color: var(--green); text-transform: uppercase; margin-bottom: 20px;
+}
+.page-hero h1 {
+  font-size: 52px; font-weight: 800; letter-spacing: -1px;
+  color: var(--text); line-height: 1.1;
+}
+.page-hero h1 .dim { color: var(--text-muted); }
+.page-hero p {
+  max-width: 560px; margin: 24px auto 0;
+  font-size: 15px; color: var(--text-dim); line-height: 1.8;
+}
 
+/* ── STEPS OVERVIEW ── */
+.steps-section {
+  max-width: 1000px; margin: 0 auto;
+  padding: 64px 48px 80px;
+}
+.steps-grid {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  position: relative;
+}
 .steps-grid::before {
   content: '';
-  position: absolute;
-  top: 36px;
-  left: 72px;
-  right: 72px;
-  height: 2px;
-  background: repeating-linear-gradient(to right, #ddd 0, #ddd 8px, transparent 8px, transparent 16px);
+  position: absolute; top: 36px; left: 72px; right: 72px; height: 1px;
+  background: repeating-linear-gradient(to right, var(--border-light) 0, var(--border-light) 6px, transparent 6px, transparent 14px);
 }
-
-.step {
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  flex: 1;
-}
-
+.step { text-align: center; position: relative; z-index: 1; flex: 1; }
 .step-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: #1D1B1C;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  font-size: 24px;
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--bg-card); border: 1px solid var(--border-light);
+  color: var(--green); display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px; font-size: 24px;
 }
-
 .step-number {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--green);
-  text-transform: uppercase;
-  margin-bottom: 6px;
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  color: var(--green); text-transform: uppercase; margin-bottom: 6px;
 }
-
 .step-title {
-  font-size: 15px;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-  color: var(--text);
+  font-size: 14px; font-weight: 700; text-transform: uppercase;
+  margin-bottom: 8px; color: var(--text); letter-spacing: 1px;
 }
-
 .step-desc {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.6;
-  max-width: 200px;
-  margin: 0 auto;
+  font-size: 13px; color: var(--text-dim); line-height: 1.6;
+  max-width: 200px; margin: 0 auto;
 }
 
-/* ── DETAILED STEPS (expanded) ── */
+/* ── DETAILED STEPS ── */
 .steps-detail {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 48px 80px;
+  max-width: 900px; margin: 0 auto; padding: 0 48px 80px;
 }
-
 .detail-step {
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
-  padding: 48px 0;
-  border-bottom: 1px solid var(--border);
+  display: flex; gap: 40px; align-items: flex-start;
+  padding: 48px 0; border-bottom: 1px solid var(--border);
 }
-
-.detail-step:first-child {
-  border-top: 2px solid var(--green);
-}
-
-.detail-step:last-child {
-  border-bottom: none;
-}
-
+.detail-step:first-child { border-top: 1px solid var(--green); }
+.detail-step:last-child { border-bottom: none; }
 .detail-number {
-  font-size: 80px;
-  font-weight: 900;
-  color: var(--green);
-  line-height: 1;
-  min-width: 120px;
-  text-align: right;
-  opacity: 0.2;
+  font-size: 80px; font-weight: 900; color: var(--green);
+  line-height: 1; min-width: 120px; text-align: right; opacity: 0.15;
 }
-
-.detail-content {
-  padding-top: 8px;
-}
-
+.detail-content { padding-top: 8px; }
 .detail-title {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--text);
-  text-transform: uppercase;
-  margin-bottom: 12px;
+  font-size: 16px; font-weight: 700; letter-spacing: 1.5px;
+  color: var(--text); text-transform: uppercase; margin-bottom: 12px;
 }
-
 .detail-desc {
-  font-size: 15px;
-  font-weight: 400;
-  color: #555;
-  line-height: 1.8;
-  max-width: 520px;
+  font-size: 14px; color: var(--text-dim); line-height: 1.8; max-width: 520px;
 }
 
 /* ── TRANSPARENCY ── */
 .transparency {
-  background: #f8f8f8;
-  padding: 80px 48px;
-  text-align: center;
+  background: var(--bg-surface); padding: 80px 48px; text-align: center;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
 }
-
 .transparency .label {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 4px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  margin-bottom: 16px;
+  font-size: 11px; font-weight: 600; letter-spacing: 4px;
+  color: var(--green); text-transform: uppercase; margin-bottom: 20px;
 }
-
 .transparency h2 {
-  font-size: 28px;
-  font-weight: 900;
-  color: var(--text);
-  letter-spacing: -0.5px;
-  margin-bottom: 28px;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.3;
+  font-size: 28px; font-weight: 800; color: var(--text); letter-spacing: -0.5px;
+  margin-bottom: 28px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.3;
 }
-
 .transparency p {
-  max-width: 640px;
-  margin: 0 auto 20px;
-  font-size: 15px;
-  font-weight: 400;
-  color: #555;
-  line-height: 1.8;
+  max-width: 640px; margin: 0 auto 20px;
+  font-size: 14px; color: var(--text-dim); line-height: 1.8;
 }
 
 /* ── WINNER OPTIONS ── */
 .options-section {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 80px 48px;
+  max-width: 960px; margin: 0 auto; padding: 80px 48px;
 }
-
 .options-section h2 {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 900;
-  color: var(--text);
-  letter-spacing: -0.5px;
-  margin-bottom: 12px;
+  text-align: center; font-size: 28px; font-weight: 800;
+  color: var(--text); letter-spacing: -0.5px; margin-bottom: 12px;
 }
-
 .options-section .subtitle {
-  text-align: center;
-  font-size: 15px;
-  font-weight: 400;
-  color: #555;
-  margin-bottom: 48px;
+  text-align: center; font-size: 14px; color: var(--text-dim); margin-bottom: 48px;
 }
-
 .options-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
 }
-
 .option-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  padding: 40px 32px;
-  text-align: center;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  background: var(--bg-card); border: 1px solid var(--border);
+  padding: 40px 32px; border-radius: 8px; text-align: center;
+  transition: border-color 0.2s;
 }
-
-.option-card:hover {
-  border-color: var(--green);
-  box-shadow: 0 4px 20px rgba(17,79,51,0.08);
-}
-
+.option-card:hover { border-color: var(--green); }
 .option-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  color: var(--green);
-  text-transform: uppercase;
-  margin-bottom: 14px;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  color: var(--green); text-transform: uppercase; margin-bottom: 14px;
 }
-
 .option-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 16px;
+  font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 16px;
 }
-
 .option-desc {
-  font-size: 14px;
-  font-weight: 400;
-  color: #555;
-  line-height: 1.7;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
 }
 
 /* ── CTA BANNER ── */
 .cta-banner {
-  background: var(--green);
-  padding: 80px 48px;
-  text-align: center;
+  background: var(--bg-surface); padding: 80px 48px; text-align: center;
+  border-top: 1px solid var(--border);
 }
-
 .cta-banner h2 {
-  font-size: 36px;
-  font-weight: 900;
-  letter-spacing: -1px;
-  color: #fff;
-  margin-bottom: 12px;
+  font-size: 36px; font-weight: 800; letter-spacing: -1px;
+  color: var(--text); margin-bottom: 12px;
 }
-
 .cta-banner p {
-  font-size: 16px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 36px;
+  font-size: 15px; color: var(--text-dim); margin-bottom: 36px;
 }
-
 .cta-btn {
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 14px 40px;
-  background: #fff;
-  color: var(--green);
-  border-radius: 30px;
-  transition: all 0.2s;
+  display: inline-block; font-size: 13px; font-weight: 700;
+  padding: 14px 40px; background: var(--green); color: #000;
+  border-radius: 6px; letter-spacing: 1px; text-transform: uppercase;
+  transition: background 0.2s;
 }
+.cta-btn:hover { background: var(--green-dark); }
 
-.cta-btn:hover {
-  background: #f0f0f0;
-}
-
-/* ── FAQ SECTION ── */
+/* ── FAQ ── */
 .faq-section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 80px 48px;
+  max-width: 800px; margin: 0 auto; padding: 80px 48px;
 }
-
 .faq-section h2 {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 900;
-  color: var(--text);
-  margin-bottom: 40px;
+  text-align: center; font-size: 28px; font-weight: 800;
+  color: var(--text); margin-bottom: 40px;
 }
-
 .faq-item {
-  border-bottom: 1px solid var(--border);
-  padding: 20px 0;
-  cursor: pointer;
+  border-bottom: 1px solid var(--border); padding: 20px 0; cursor: pointer;
 }
-
 .faq-q {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 600; color: var(--text);
 }
-
 .faq-q .faq-toggle {
-  font-size: 20px;
-  font-weight: 300;
-  color: var(--text-muted);
-  transition: transform 0.3s;
-  flex-shrink: 0;
-  margin-left: 16px;
+  font-size: 20px; font-weight: 300; color: var(--text-muted);
+  transition: transform 0.3s; flex-shrink: 0; margin-left: 16px;
 }
-
 .faq-item.open .faq-toggle { transform: rotate(45deg); }
-
-.faq-a {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
 .faq-item.open .faq-a { max-height: 200px; }
-
 .faq-a p {
-  padding: 12px 0 4px;
-  font-size: 14px;
-  font-weight: 400;
-  color: #555;
-  line-height: 1.7;
+  padding: 12px 0 4px; font-size: 13px; color: var(--text-dim); line-height: 1.7;
 }
 
 /* ── FOOTER ── */
 footer {
-  background: #fff;
-  border-top: 1px solid #eee;
-  padding: 60px 48px 32px;
+  background: var(--bg-surface); border-top: 1px solid var(--border);
+  padding: 48px 48px 24px;
 }
-
 .footer-inner {
-  max-width: 1400px;
-  margin: 0 auto 40px;
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 48px;
+  max-width: 1400px; margin: 0 auto 32px;
+  display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 48px;
 }
-
-.footer-logo {
-  font-size: 16px;
-  font-weight: 900;
-  background: var(--green);
-  color: #fff;
-  padding: 6px 12px;
-  display: inline-block;
-  margin-bottom: 14px;
-}
-
-.footer-tagline {
-  font-size: 13px;
-  color: #999;
-  line-height: 1.6;
-}
-
-.footer-links {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px 40px;
-}
-
-.footer-links a {
-  font-size: 14px;
-  font-weight: 500;
-  color: #555;
-  transition: color 0.2s;
-}
-
+.footer-logo { font-size: 15px; font-weight: 600; letter-spacing: 3px; margin-bottom: 12px; }
+.footer-tagline { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 40px; }
+.footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
 .footer-links a:hover { color: var(--green); }
-
 .footer-contact { text-align: right; }
-
-.footer-email {
-  font-size: 13px;
-  color: #999;
-  margin-bottom: 12px;
-}
-
-.footer-socials {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
+.footer-email { font-size: 13px; color: var(--text-dim); margin-bottom: 12px; }
+.footer-socials { display: flex; justify-content: flex-end; gap: 8px; }
 .footer-socials a {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
-  color: #999;
-  transition: all 0.2s;
+  width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: var(--text-muted); transition: all 0.2s;
 }
-
-.footer-socials a:hover {
-  background: var(--green);
-  border-color: var(--green);
-  color: #fff;
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-}
-
-.footer-copy { font-size: 12px; color: #999; }
+.footer-socials a:hover { background: var(--green); border-color: var(--green); color: #000; }
+.footer-bottom { text-align: center; padding-top: 16px; border-top: 1px solid var(--border); }
+.footer-copy { font-size: 11px; color: var(--text-dim); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
@@ -623,86 +276,79 @@ footer {
   .steps-grid::before { display: none; }
   .step { flex: 0 0 45%; }
   .options-grid { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr; text-align: center; }
-  .footer-contact { text-align: center; }
-  .footer-socials { justify-content: center; }
-  .footer-links { justify-items: center; }
 }
 
 @media (max-width: 768px) {
+  nav { padding: 0 16px; }
+  .nav-left, .nav-right { display: none; }
+  .nav-left-icons, .nav-right-icons { display: flex; }
   .hamburger { display: flex; }
-  .nav-links, .nav-right { display: none; }
-  nav { padding: 0 16px; height: 56px; }
-  .logo { font-size: 14px; padding: 6px 12px; margin-right: 0; }
-  .top-banner { font-size: 12px; padding: 8px 16px; }
-  .mobile-menu { top: 56px; }
+  .nav-divider-left, .nav-divider-right { margin: 0 16px; }
 
-  .page-hero { padding: 60px 20px 40px; }
+  .page-hero { padding: 64px 20px 48px; }
   .page-hero h1 { font-size: 32px; }
-  .steps-section { padding: 20px 20px 40px; }
+  .steps-section { padding: 32px 20px 48px; }
   .step { flex: 0 0 100%; }
-  .steps-detail { padding: 0 20px 40px; }
+  .steps-detail { padding: 0 20px 48px; }
   .detail-step { flex-direction: column; gap: 12px; }
   .detail-number { text-align: left; font-size: 56px; min-width: auto; }
-  .transparency { padding: 50px 20px; }
+  .transparency { padding: 56px 20px; }
   .transparency h2 { font-size: 22px; }
-  .options-section { padding: 50px 20px; }
+  .options-section { padding: 56px 20px; }
   .options-section h2 { font-size: 22px; }
-  .cta-banner { padding: 50px 20px; }
+  .cta-banner { padding: 56px 20px; }
   .cta-banner h2 { font-size: 28px; }
-  .faq-section { padding: 50px 20px; }
+  .faq-section { padding: 56px 20px; }
   .faq-section h2 { font-size: 22px; }
   footer { padding: 40px 20px 20px; }
-  .footer-inner { gap: 24px; }
-  .footer-links { grid-template-columns: 1fr; gap: 12px; }
+  .footer-inner { grid-template-columns: 1fr; text-align: center; gap: 24px; }
+  .footer-contact { text-align: center; }
+  .footer-socials { justify-content: center; }
+  .footer-links { justify-items: center; grid-template-columns: 1fr; gap: 12px; }
 }
 </style>
 </head>
 <body>
 
-<!-- TOP BANNER -->
-<div class="top-banner">
-  <span class="apple-pay-icon">Pay</span>
-  Apple Pay is available on winusupercars!
-</div>
-
 <!-- NAV -->
 <nav>
-  <a href="site_home.html" class="logo">WINUSUPERCARS</a>
-  <div class="nav-links">
-    <a href="site_comment.html" class="active">How to play</a>
+  <div class="nav-left-icons">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 0 0 6 8"/><rect x="3" y="8" width="18" height="14" rx="2"/></svg>
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+  </div>
+  <div class="nav-left">
+    <a href="site_comment.html">How it works</a>
     <a href="site_gagnants.html">Winners</a>
-    <a href="#">Feed</a>
-    <a href="site_faq.html">Faq</a>
-    <a href="site_mentions.html">About us</a>
-    <a href="#">Contact us</a>
+    <a href="site_paddock.html">The Paddock</a>
   </div>
+  <div class="nav-divider-left"></div>
+  <a href="site_home.html" class="logo">WIN U SUPERCARS</a>
+  <div class="nav-divider-right"></div>
   <div class="nav-right">
-    <span class="nav-lang">English &#9662;</span>
-    <span class="nav-auth"><a href="#">Login</a> | <a href="#">Register</a></span>
-    <svg class="nav-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8"/><rect x="3" y="8" width="18" height="14" rx="2"/></svg>
+    <a href="site_faq.html">FAQ</a>
+    <a href="#">Login</a>
+    <a href="site_tirage.html" class="btn-enter">Enter now</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right-icons">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="site_comment.html">How to play</a>
+  <a href="site_comment.html">How it works</a>
   <a href="site_gagnants.html">Winners</a>
-  <a href="#">Feed</a>
-  <a href="site_faq.html">Faq</a>
+  <a href="site_paddock.html">The Paddock</a>
+  <a href="site_faq.html">FAQ</a>
   <a href="site_mentions.html">About us</a>
-  <a href="#">Contact us</a>
   <a href="#">Login</a>
-  <a href="#">Register</a>
 </div>
 
 <!-- HERO -->
 <section class="page-hero">
   <p class="label">Your path to a supercar</p>
-  <h1>How to Enter<br><span class="green">the Competition</span></h1>
+  <h1>How to Enter<br><span class="dim">the Competition</span></h1>
   <p>Four simple steps stand between you and the keys to a brand-new supercar. No hidden fees, no complex rules — just pure opportunity.</p>
 </section>
 
@@ -710,25 +356,33 @@ footer {
 <section class="steps-section">
   <div class="steps-grid">
     <div class="step">
-      <div class="step-icon">&#127942;</div>
+      <div class="step-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
       <div class="step-number">Step 01</div>
       <div class="step-title">Choose</div>
       <div class="step-desc">Choose how many tickets you want (up to 50 per player) and get ready to own a supercar.</div>
     </div>
     <div class="step">
-      <div class="step-icon">&#9654;</div>
+      <div class="step-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </div>
       <div class="step-number">Step 02</div>
       <div class="step-title">Play</div>
       <div class="step-desc">Test your supercar expertise with our online quiz, crafted to separate the true connoisseurs.</div>
     </div>
     <div class="step">
-      <div class="step-icon">&#128274;</div>
+      <div class="step-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      </div>
       <div class="step-number">Step 03</div>
       <div class="step-title">Buy</div>
       <div class="step-desc">Pay safely to enter. Our partner uses a third-party Random Number Generator for impartial selection.</div>
     </div>
     <div class="step">
-      <div class="step-icon">&#128101;</div>
+      <div class="step-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
       <div class="step-number">Step 04</div>
       <div class="step-title">Win Your Supercar</div>
       <div class="step-desc">That's all there is to it! With a minimal entry of just $49, you could win a brand-new $265,000 supercar.</div>
@@ -830,39 +484,28 @@ footer {
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-logo">WINUSUPERCARS</div>
-      <p class="footer-tagline">Premium supercar competitions.<br>Based in Miami, FL.</p>
+      <div class="footer-logo">WIN U SUPERCARS</div>
+      <p class="footer-tagline">Premium supercar sweepstakes.<br>Based in Miami, FL.</p>
     </div>
     <div class="footer-links">
-      <a href="site_home.html">Home</a>
-      <a href="site_tirage.html">Competitions</a>
-      <a href="site_gagnants.html">Winners</a>
-      <a href="site_comment.html">How It Works</a>
-      <a href="site_faq.html">FAQ</a>
-      <a href="site_cgv.html">T&amp;C</a>
-      <a href="site_mentions.html">Legal</a>
-      <a href="#">Contact us</a>
+      <a href="site_home.html">Home</a><a href="site_tirage.html">Competitions</a>
+      <a href="site_gagnants.html">Winners</a><a href="site_comment.html">How It Works</a>
+      <a href="site_faq.html">FAQ</a><a href="site_cgv.html">T&amp;C</a>
+      <a href="site_mentions.html">Legal</a><a href="#">Contact us</a>
     </div>
     <div class="footer-contact">
       <div class="footer-email">contact@winusupercars.com</div>
-      <div class="footer-socials">
-        <a href="#">IG</a>
-        <a href="#">TW</a>
-        <a href="#">FB</a>
-        <a href="#">YT</a>
-      </div>
+      <div class="footer-socials"><a href="#">IG</a><a href="#">TW</a><a href="#">FB</a><a href="#">YT</a></div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">&copy; 2026 WIN U SUPERCARS — Miami, FL. All rights reserved.</p>
-  </div>
+  <div class="footer-bottom"><p class="footer-copy">&copy; 2026 WIN U SUPERCARS — Miami, FL. All rights reserved.</p></div>
 </footer>
 
 <script>
 // Hamburger
 (function() {
-  const h = document.getElementById('hamburger');
-  const m = document.getElementById('mobileMenu');
+  var h = document.getElementById('hamburger');
+  var m = document.getElementById('mobileMenu');
   h.addEventListener('click', function() {
     h.classList.toggle('active');
     m.classList.toggle('active');
