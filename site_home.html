@@ -1000,108 +1000,147 @@ nav {
 
 /* ── WINNERS ── */
 .winners {
-  padding: 60px 24px;
+  padding: 80px 24px;
   overflow: hidden;
 }
 
 .section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1400px;
-  margin: 0 auto 24px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto 48px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 12px;
 }
 
 .section-title {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--text-muted);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
-.winners-scroll {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 16px;
-  max-width: 1400px;
+.section-title .green { color: var(--green); }
+
+.winners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.winners-scroll::-webkit-scrollbar { height: 3px; }
-.winners-scroll::-webkit-scrollbar-track { background: var(--border); }
-.winners-scroll::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
-
 .w-card {
-  min-width: 240px;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  scroll-snap-align: start;
-  flex-shrink: 0;
   position: relative;
   border: 1px solid var(--border);
+  background: var(--bg-card);
+  transition: transform 0.3s, border-color 0.3s;
 }
 
-.w-card img {
+.w-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34,197,94,0.3);
+}
+
+.w-card-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.w-card-img img {
   width: 100%;
-  height: 300px;
+  height: 280px;
   object-fit: cover;
   display: block;
 }
 
-.w-overlay {
+.w-card-prize-tag {
   position: absolute;
-  bottom: 0;
-  left: 0; right: 0;
-  background: linear-gradient(transparent, rgba(0,0,0,0.9));
-  padding: 20px 16px 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-.w-name { font-size: 13px; font-weight: 600; }
-.w-prize { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-.w-val { font-size: 16px; font-weight: 700; color: var(--green); text-align: right; }
-
-.winners-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.winners-nav button {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--border-light);
-  background: transparent;
-  color: var(--text);
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.winners-nav button:hover {
+  top: 14px;
+  left: 14px;
   background: var(--green);
-  border-color: var(--green);
   color: #000;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+
+.w-card-body {
+  padding: 20px;
+}
+
+.w-card-won {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.w-card-car {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.w-card-winner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.w-card-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-light);
+}
+
+.w-card-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.w-card-location {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.w-card-value {
+  margin-left: auto;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.winners-cta {
+  text-align: center;
+  margin-top: 40px;
 }
 
 .btn-outline {
   border: 1px solid var(--border-light);
   color: var(--text);
   background: transparent;
-  border-radius: 6px;
-  padding: 10px 24px;
+  border-radius: 8px;
+  padding: 12px 28px;
   font-family: inherit;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -1112,112 +1151,275 @@ nav {
   color: #000;
 }
 
-/* ── HOW TO ENTER ── */
+/* ── HOW TO PLAY ── */
 .how-section {
-  padding: 80px 48px;
-  max-width: 1000px;
+  padding: 80px 24px;
+  max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+}
+
+.how-header {
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .how-title {
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 36px;
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 48px;
 }
 
 .how-title .green { color: var(--green); }
 
-.how-steps {
-  display: flex;
-  gap: 24px;
+.how-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.how-timeline::before {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), var(--green) 30%, var(--border) 30%);
+  z-index: 0;
 }
 
 .how-step {
-  flex: 1;
   text-align: center;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 28px 20px;
+  position: relative;
+  z-index: 1;
+  padding: 0 12px;
 }
 
-.how-step-num {
-  width: 40px;
-  height: 40px;
+.how-step-circle {
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  background: var(--green);
-  color: #000;
+  background: var(--bg-surface);
+  border: 2px solid var(--green);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 16px;
+  margin: 0 auto 20px;
+  font-size: 13px;
   font-weight: 700;
-  font-size: 16px;
+  color: var(--green);
+  letter-spacing: 0.5px;
+}
+
+.how-step-icon {
+  font-size: 24px;
 }
 
 .how-step-name {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
 .how-step-desc {
   font-size: 13px;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.6;
+  max-width: 200px;
+  margin: 0 auto;
 }
 
 .how-cta {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 56px;
 }
 
-/* ── FEED / PADDOCK ── */
-.feed-section {
+.btn-green {
+  display: inline-block;
+  background: var(--green);
+  color: #000;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 14px 36px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-green:hover {
+  background: #16a34a;
+  transform: translateY(-1px);
+}
+
+/* ── TRUST BANNER ── */
+.trust-banner {
   padding: 60px 24px;
-  max-width: 900px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.trust-inner {
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.feed-title {
-  font-size: 20px;
+.trust-label {
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 24px;
-}
-
-.feed-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border);
-  transition: padding 0.2s;
-  gap: 24px;
-}
-
-.feed-item:first-child { border-top: 1px solid var(--border); }
-
-.feed-item:hover { padding-left: 12px; }
-
-.feed-item-title {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-.feed-item-date {
-  font-size: 13px;
   color: var(--text-dim);
-  white-space: nowrap;
+  margin-bottom: 20px;
 }
 
-.feed-more-wrap { text-align: center; margin-top: 32px; }
+.trust-badges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.trust-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.trust-badge-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(34,197,94,0.1);
+  border: 1px solid rgba(34,197,94,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.trust-badge-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+/* ── PADDOCK / FEED ── */
+.feed-section {
+  padding: 80px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feed-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.feed-card {
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.feed-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34,197,94,0.3);
+}
+
+.feed-card-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.feed-card-img img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
+
+.feed-card:hover .feed-card-img img {
+  transform: scale(1.05);
+}
+
+.feed-card-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(9,9,11,0.8);
+  backdrop-filter: blur(8px);
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(34,197,94,0.2);
+}
+
+.feed-card-body {
+  padding: 18px 20px 20px;
+}
+
+.feed-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.feed-card-excerpt {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.feed-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.feed-card-date {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.feed-card-read {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
+  letter-spacing: 0.5px;
+}
+
+.feed-more-wrap { text-align: center; margin-top: 40px; }
 
 /* ── FOOTER ── */
 footer {
@@ -1304,8 +1506,9 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
-  .how-steps { flex-wrap: wrap; }
-  .how-step { flex: 1 1 45%; }
+  .winners-grid { grid-template-columns: repeat(2, 1fr); }
+  .how-timeline { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .how-timeline::before { display: none; }
   .footer-inner { grid-template-columns: 1fr; text-align: center; }
   .footer-contact { text-align: center; }
   .footer-socials { justify-content: center; }
@@ -1333,21 +1536,21 @@ footer {
   .mission-title { font-size: 26px; }
 
   .winners { padding: 40px 16px; }
-  .w-card { min-width: 200px; }
-  .w-card img { height: 240px; }
+  .winners-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 28px; }
+  .w-card-img img { height: 220px; }
 
   .how-section { padding: 50px 20px; }
-  .how-steps { flex-direction: column; }
-  .how-step { flex: 1 1 100%; }
+  .how-timeline { grid-template-columns: 1fr; gap: 24px; }
+  .how-title { font-size: 28px; }
 
   .feed-section { padding: 40px 16px; }
-  .feed-item-title { font-size: 14px; }
+  .feed-grid { grid-template-columns: 1fr; }
+
+  .trust-badges { gap: 24px; }
 
   footer { padding: 32px 16px 16px; }
   .footer-links { grid-template-columns: 1fr; gap: 10px; }
-
-  .stats-bar-inner { gap: 20px; }
-  .stat-value { font-size: 18px; }
 }
 
 @media (max-width: 480px) {
@@ -1625,99 +1828,184 @@ footer {
 </div>
 </div>
 
-<!-- MISSION -->
-<section class="mission">
-  <h2 class="mission-title">We've given away <span class="green">$4.2 million</span> in supercars.<br>Real winners. Real cars. <span class="green">Real odds.</span></h2>
-  <p class="mission-desc">Win U Supercars is a game of skill and knowledge. Our goal is for everyone to have a real shot at winning the supercar of their dreams. Based in Miami, FL — we source the finest supercars and deliver them to your door.</p>
-</section>
-
 <!-- WINNERS -->
 <section class="winners">
   <div class="section-header">
-    <h2 class="section-title">Recent winners</h2>
+    <p class="section-label">Our Winners</p>
+    <h2 class="section-title">Real people. <span class="green">Real supercars.</span></h2>
   </div>
-  <div class="winners-scroll">
+  <div class="winners-grid">
     <div class="w-card">
-      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face" alt="Winner">
-      <div class="w-overlay"><div><div class="w-name">James M.</div><div class="w-prize">Ferrari 488 GTB</div></div><div class="w-val">$285k</div></div>
+      <div class="w-card-img">
+        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&q=80" alt="Ferrari 488 GTB">
+        <div class="w-card-prize-tag">Winner</div>
+      </div>
+      <div class="w-card-body">
+        <p class="w-card-won">Winner of the</p>
+        <p class="w-card-car">Ferrari 488 GTB</p>
+        <div class="w-card-winner">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="James M." class="w-card-avatar">
+          <div><p class="w-card-name">James M.</p><p class="w-card-location">Miami, FL</p></div>
+          <div class="w-card-value">$285k</div>
+        </div>
+      </div>
     </div>
     <div class="w-card">
-      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop&crop=face" alt="Winner">
-      <div class="w-overlay"><div><div class="w-name">Sarah K.</div><div class="w-prize">McLaren 720S</div></div><div class="w-val">$299k</div></div>
+      <div class="w-card-img">
+        <img src="https://images.unsplash.com/photo-1638730558978-18941cc086ad?w=800&q=80" alt="McLaren 720S">
+        <div class="w-card-prize-tag">Winner</div>
+      </div>
+      <div class="w-card-body">
+        <p class="w-card-won">Winner of the</p>
+        <p class="w-card-car">McLaren 720S</p>
+        <div class="w-card-winner">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Sarah K." class="w-card-avatar">
+          <div><p class="w-card-name">Sarah K.</p><p class="w-card-location">London, UK</p></div>
+          <div class="w-card-value">$299k</div>
+        </div>
+      </div>
     </div>
     <div class="w-card">
-      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop&crop=face" alt="Winner">
-      <div class="w-overlay"><div><div class="w-name">David R.</div><div class="w-prize">Porsche 911 Turbo S</div></div><div class="w-val">$230k</div></div>
-    </div>
-    <div class="w-card">
-      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=face" alt="Winner">
-      <div class="w-overlay"><div><div class="w-name">Michael T.</div><div class="w-prize">Lamborghini Urus</div></div><div class="w-val">$240k</div></div>
-    </div>
-    <div class="w-card">
-      <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=500&fit=crop&crop=face" alt="Winner">
-      <div class="w-overlay"><div><div class="w-name">Emma L.</div><div class="w-prize">Porsche Cayenne Turbo</div></div><div class="w-val">$185k</div></div>
-    </div>
-    <div class="w-card">
-      <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop&crop=face" alt="Winner">
-      <div class="w-overlay"><div><div class="w-name">Alex B.</div><div class="w-prize">Ferrari F8 Tributo</div></div><div class="w-val">$310k</div></div>
+      <div class="w-card-img">
+        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&q=80" alt="Porsche 911 Turbo S">
+        <div class="w-card-prize-tag">Winner</div>
+      </div>
+      <div class="w-card-body">
+        <p class="w-card-won">Winner of the</p>
+        <p class="w-card-car">Porsche 911 Turbo S</p>
+        <div class="w-card-winner">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" alt="David R." class="w-card-avatar">
+          <div><p class="w-card-name">David R.</p><p class="w-card-location">Paris, France</p></div>
+          <div class="w-card-value">$230k</div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="winners-nav">
-    <button id="scrollLeft">&#8592;</button>
+  <div class="winners-cta">
     <a href="site_gagnants.html" class="btn-outline">View all winners</a>
-    <button id="scrollRight">&#8594;</button>
   </div>
 </section>
 
-<!-- HOW TO ENTER -->
+<!-- HOW TO PLAY -->
 <section class="how-section">
-  <h2 class="how-title"><span class="green">How to</span> enter the competition</h2>
-  <div class="how-steps">
+  <div class="how-header">
+    <p class="section-label">How to play</p>
+    <h2 class="how-title">Four steps to your <span class="green">dream supercar</span></h2>
+  </div>
+  <div class="how-timeline">
     <div class="how-step">
-      <div class="how-step-num">1</div>
+      <div class="how-step-circle"><span class="how-step-icon">&#127919;</span></div>
       <div class="how-step-name">Choose</div>
-      <div class="how-step-desc">Choose how many tickets you want (up to 50 per player) and pick your supercar.</div>
+      <div class="how-step-desc">Pick your dream supercar and choose how many tickets you want (up to 50 per player).</div>
     </div>
     <div class="how-step">
-      <div class="how-step-num">2</div>
+      <div class="how-step-circle"><span class="how-step-icon">&#127918;</span></div>
       <div class="how-step-name">Play</div>
-      <div class="how-step-desc">Test your supercar expertise with our online game, crafted to separate the true connoisseurs.</div>
+      <div class="how-step-desc">Test your supercar expertise with our online game. Prove you're a true connoisseur.</div>
     </div>
     <div class="how-step">
-      <div class="how-step-num">3</div>
-      <div class="how-step-name">Buy</div>
-      <div class="how-step-desc">Pay safely to enter. Our partner uses a third-party Random Number Generator for impartial selection.</div>
+      <div class="how-step-circle"><span class="how-step-icon">&#128179;</span></div>
+      <div class="how-step-name">Enter</div>
+      <div class="how-step-desc">Secure your spot safely. A third-party RNG ensures completely fair and impartial draws.</div>
     </div>
     <div class="how-step">
-      <div class="how-step-num">4</div>
+      <div class="how-step-circle"><span class="how-step-icon">&#127942;</span></div>
       <div class="how-step-name">Win</div>
-      <div class="how-step-desc">That's all there is to it! You could be the lucky winner of a brand-new supercar.</div>
+      <div class="how-step-desc">You could be the next winner. Your supercar is sourced, delivered, and titled to you.</div>
     </div>
   </div>
   <div class="how-cta">
-    <a href="site_tirage.html" class="btn-outline">Join the next competition</a>
+    <a href="site_tirage.html" class="btn-green">Enter the competition &#8594;</a>
   </div>
 </section>
 
-<!-- THE PADDOCK — FEED -->
+<!-- TRUST BANNER -->
+<section class="trust-banner">
+  <div class="trust-inner">
+    <p class="trust-label">Trusted & Verified</p>
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <div class="trust-badge-icon">&#128274;</div>
+        <span class="trust-badge-text">Secure payments</span>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">&#9989;</div>
+        <span class="trust-badge-text">Verified RNG draws</span>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">&#127919;</div>
+        <span class="trust-badge-text">Real winners, real cars</span>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">&#128666;</div>
+        <span class="trust-badge-text">Delivered to your door</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PADDOCK -->
 <section class="feed-section">
-  <h2 class="feed-title">From the Paddock</h2>
-  <div>
-    <a href="site_paddock.html" class="feed-item">
-      <div class="feed-item-title">Why the Huracan EVO is Lamborghini's most driver-focused supercar</div>
-      <div class="feed-item-date">16.05.2026</div>
+  <div class="feed-header">
+    <p class="section-label">The Paddock</p>
+    <h2 class="section-title">Stories from the <span class="green">fast lane</span></h2>
+  </div>
+  <div class="feed-grid">
+    <a href="site_paddock.html" class="feed-card">
+      <div class="feed-card-img">
+        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=80" alt="Huracan EVO">
+        <span class="feed-card-tag">Supercar spotlight</span>
+      </div>
+      <div class="feed-card-body">
+        <p class="feed-card-title">Why the Huracan EVO is Lamborghini's most driver-focused supercar</p>
+        <p class="feed-card-excerpt">The EVO takes the already brilliant Huracan platform and sharpens every edge. A supercar that rewards skill and punishes hesitation.</p>
+        <div class="feed-card-meta">
+          <span class="feed-card-date">16.05.2026</span>
+          <span class="feed-card-read">Read more &#8594;</span>
+        </div>
+      </div>
     </a>
-    <a href="site_paddock.html" class="feed-item">
-      <div class="feed-item-title">Aston Martin DB11: British grand touring meets Miami luxury</div>
-      <div class="feed-item-date">14.05.2026</div>
+    <a href="site_paddock.html" class="feed-card">
+      <div class="feed-card-img">
+        <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=600&q=80" alt="Aston Martin DB11">
+        <span class="feed-card-tag">Grand Touring</span>
+      </div>
+      <div class="feed-card-body">
+        <p class="feed-card-title">Aston Martin DB11: British grand touring meets Miami luxury</p>
+        <p class="feed-card-excerpt">Equal parts elegant and ferocious, the DB11 embodies everything a modern GT should be. James Bond would approve.</p>
+        <div class="feed-card-meta">
+          <span class="feed-card-date">14.05.2026</span>
+          <span class="feed-card-read">Read more &#8594;</span>
+        </div>
+      </div>
     </a>
-    <a href="site_paddock.html" class="feed-item">
-      <div class="feed-item-title">BMW M4 Competition: the everyday supercar you can actually win</div>
-      <div class="feed-item-date">11.05.2026</div>
+    <a href="site_paddock.html" class="feed-card">
+      <div class="feed-card-img">
+        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80" alt="BMW M4">
+        <span class="feed-card-tag">Daily driver</span>
+      </div>
+      <div class="feed-card-body">
+        <p class="feed-card-title">BMW M4 Competition: the everyday supercar you can actually win</p>
+        <p class="feed-card-excerpt">503 horsepower, rear-wheel drive, and a price tag that won't require a second mortgage. The perfect daily.</p>
+        <div class="feed-card-meta">
+          <span class="feed-card-date">11.05.2026</span>
+          <span class="feed-card-read">Read more &#8594;</span>
+        </div>
+      </div>
     </a>
-    <a href="site_paddock.html" class="feed-item">
-      <div class="feed-item-title">Aventador SVJ: the last of the naturally aspirated V12 warriors</div>
-      <div class="feed-item-date">09.05.2026</div>
+    <a href="site_paddock.html" class="feed-card">
+      <div class="feed-card-img">
+        <img src="https://images.unsplash.com/photo-1617650728468-8581e439c864?w=600&q=80" alt="Aventador SVJ">
+        <span class="feed-card-tag">Legend</span>
+      </div>
+      <div class="feed-card-body">
+        <p class="feed-card-title">Aventador SVJ: the last of the naturally aspirated V12 warriors</p>
+        <p class="feed-card-excerpt">759 horsepower of pure, screaming V12. No turbos, no hybrids. The final act of Lamborghini's most iconic lineage.</p>
+        <div class="feed-card-meta">
+          <span class="feed-card-date">09.05.2026</span>
+          <span class="feed-card-read">Read more &#8594;</span>
+        </div>
+      </div>
     </a>
   </div>
   <div class="feed-more-wrap">
@@ -1776,16 +2064,7 @@ footer {
   });
 })();
 
-// Winners scroll
-(function() {
-  var scroll = document.querySelector('.winners-scroll');
-  document.getElementById('scrollLeft').addEventListener('click', function() {
-    scroll.scrollBy({ left: -260, behavior: 'smooth' });
-  });
-  document.getElementById('scrollRight').addEventListener('click', function() {
-    scroll.scrollBy({ left: 260, behavior: 'smooth' });
-  });
-})();
+// (Winners scroll removed — now using grid layout)
 
 // Card ticket pack interaction — each card is independent
 (function() {
