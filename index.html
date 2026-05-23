@@ -821,10 +821,111 @@ nav {
 }
 
 /* SOLD OUT card */
-.comp-card.sold-out { opacity: 0.5; }
-.comp-card.sold-out img { filter: grayscale(0.6) brightness(0.6); }
-.comp-card.sold-out .cc-btn-ticket { background: #333; cursor: default; }
-.comp-card.sold-out .cc-btn-ticket:hover { background: #333; }
+.comp-card.sold-out { opacity: 0.7; }
+.comp-card.sold-out img { filter: grayscale(0.4) brightness(0.7); }
+
+/* Winner result section (replaces gauge on sold-out cards) */
+.cc-winner-result {
+  padding: 16px;
+}
+
+.cc-winner-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--green);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.cc-winner-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.cc-winner-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--green);
+  filter: none !important;
+}
+
+.cc-winner-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.cc-winner-location {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.cc-winner-prize {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.cc-winner-prize strong { color: var(--text); }
+
+.cc-winner-stats {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.cc-winner-stat {
+  flex: 1;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.cc-ws-label {
+  display: block;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.cc-ws-value {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cc-btn-next {
+  display: block;
+  background: transparent;
+  color: var(--green);
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  border: 1px solid var(--green);
+  transition: all 0.2s;
+}
+
+.cc-btn-next:hover {
+  background: var(--green);
+  color: #000;
+}
 
 .sold-badge-inline {
   display: inline-block;
@@ -1302,17 +1403,6 @@ footer {
   <span class="brand-arrow">&#8964;</span>
 </section>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-bar-inner">
-    <div><div class="stat-value green">47</div><div class="stat-label">Winners</div></div>
-    <div class="stat-sep"></div>
-    <div><div class="stat-value">$4.2M</div><div class="stat-label">Awarded</div></div>
-    <div class="stat-sep"></div>
-    <div><div class="stat-value">4.8 ★</div><div class="stat-label">Trustpilot</div></div>
-  </div>
-</div>
-
 <!-- COMPETITIONS SECTION TITLE -->
 <div class="comps-section-title">
   <h2>The Competitions</h2>
@@ -1343,7 +1433,6 @@ footer {
     <div class="cc-car"><div class="cc-car-inner">
       <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=900&q=80" alt="Porsche 911 GT3">
       <div class="car-specs-overlay"><span>Flat-6 · 502 HP</span><span>0-60 in 3.2s</span><span>RWD</span><span>$197,000 MSRP</span></div>
-      <div class="car-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
     </div></div>
     <div class="cc-gauge-section">
       <div class="cc-gauge-left">
@@ -1372,10 +1461,10 @@ footer {
     <div class="cc-ticket-section">
       <p class="cc-ticket-title">Choose your tickets</p>
       <div class="cc-packs">
-        <div class="cc-pack active"><p class="cc-pack-count">1 ticket</p><p class="cc-pack-price">$129</p></div>
-        <div class="cc-pack"><div class="cc-pack-badge">Popular</div><p class="cc-pack-count">3 tickets</p><p class="cc-pack-price">$309</p><p class="cc-pack-save green">Save 20%</p></div>
-        <div class="cc-pack"><p class="cc-pack-count">5 tickets</p><p class="cc-pack-price">$464</p><p class="cc-pack-save amber">Save 28%</p></div>
-        <div class="cc-pack"><p class="cc-pack-count">10 tickets</p><p class="cc-pack-price">$774</p><p class="cc-pack-save amber">Save 40%</p></div>
+        <div class="cc-pack active" data-t="1" data-o="1 in 2,499" data-n="Limited to 2,499 entries"><p class="cc-pack-count">1 ticket</p><p class="cc-pack-price">$129</p></div>
+        <div class="cc-pack" data-t="3" data-o="1 in 833" data-n="3x more chances to win!"><div class="cc-pack-badge">Popular</div><p class="cc-pack-count">3 tickets</p><p class="cc-pack-price">$309</p><p class="cc-pack-save green">Save 20%</p></div>
+        <div class="cc-pack" data-t="5" data-o="1 in 500" data-n="5x chances — serious player"><p class="cc-pack-count">5 tickets</p><p class="cc-pack-price">$464</p><p class="cc-pack-save amber">Save 28%</p></div>
+        <div class="cc-pack" data-t="10" data-o="1 in 250" data-n="10x chances — max advantage!"><p class="cc-pack-count">10 tickets</p><p class="cc-pack-price">$774</p><p class="cc-pack-save amber">Save 40%</p></div>
       </div>
     </div>
   </div>
@@ -1399,7 +1488,6 @@ footer {
     <div class="cc-car"><div class="cc-car-inner">
       <img src="https://images.unsplash.com/photo-1616411501431-330ddc944cad?w=900&q=80" alt="Ferrari 488 GTB">
       <div class="car-specs-overlay"><span>V8 Twin-Turbo · 661 HP</span><span>0-60 in 3.0s</span><span>RWD</span><span>$285,000 MSRP</span></div>
-      <div class="car-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
     </div></div>
     <div class="cc-gauge-section">
       <div class="cc-gauge-left">
@@ -1428,10 +1516,10 @@ footer {
     <div class="cc-ticket-section">
       <p class="cc-ticket-title">Choose your tickets</p>
       <div class="cc-packs">
-        <div class="cc-pack active"><p class="cc-pack-count">1 ticket</p><p class="cc-pack-price">$199</p></div>
-        <div class="cc-pack"><div class="cc-pack-badge">Popular</div><p class="cc-pack-count">3 tickets</p><p class="cc-pack-price">$477</p><p class="cc-pack-save green">Save 20%</p></div>
-        <div class="cc-pack"><p class="cc-pack-count">5 tickets</p><p class="cc-pack-price">$716</p><p class="cc-pack-save amber">Save 28%</p></div>
-        <div class="cc-pack"><p class="cc-pack-count">10 tickets</p><p class="cc-pack-price">$1,194</p><p class="cc-pack-save amber">Save 40%</p></div>
+        <div class="cc-pack active" data-t="1" data-o="1 in 2,900" data-n="Limited to 2,900 entries"><p class="cc-pack-count">1 ticket</p><p class="cc-pack-price">$199</p></div>
+        <div class="cc-pack" data-t="3" data-o="1 in 967" data-n="3x more chances to win!"><div class="cc-pack-badge">Popular</div><p class="cc-pack-count">3 tickets</p><p class="cc-pack-price">$477</p><p class="cc-pack-save green">Save 20%</p></div>
+        <div class="cc-pack" data-t="5" data-o="1 in 580" data-n="5x chances — serious player"><p class="cc-pack-count">5 tickets</p><p class="cc-pack-price">$716</p><p class="cc-pack-save amber">Save 28%</p></div>
+        <div class="cc-pack" data-t="10" data-o="1 in 290" data-n="10x chances — max advantage!"><p class="cc-pack-count">10 tickets</p><p class="cc-pack-price">$1,194</p><p class="cc-pack-save amber">Save 40%</p></div>
       </div>
     </div>
   </div>
@@ -1455,7 +1543,6 @@ footer {
     <div class="cc-car"><div class="cc-car-inner">
       <img src="https://images.unsplash.com/photo-1638730558978-18941cc086ad?w=900&q=80" alt="McLaren 720S Spider">
       <div class="car-specs-overlay"><span>V8 Twin-Turbo · 710 HP</span><span>0-60 in 2.8s</span><span>RWD</span><span>$299,000 MSRP</span></div>
-      <div class="car-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
     </div></div>
     <div class="cc-gauge-section">
       <div class="cc-gauge-left">
@@ -1484,10 +1571,10 @@ footer {
     <div class="cc-ticket-section">
       <p class="cc-ticket-title">Choose your tickets</p>
       <div class="cc-packs">
-        <div class="cc-pack active"><p class="cc-pack-count">1 ticket</p><p class="cc-pack-price">$249</p></div>
-        <div class="cc-pack"><div class="cc-pack-badge">Popular</div><p class="cc-pack-count">3 tickets</p><p class="cc-pack-price">$597</p><p class="cc-pack-save green">Save 20%</p></div>
-        <div class="cc-pack"><p class="cc-pack-count">5 tickets</p><p class="cc-pack-price">$896</p><p class="cc-pack-save amber">Save 28%</p></div>
-        <div class="cc-pack"><p class="cc-pack-count">10 tickets</p><p class="cc-pack-price">$1,494</p><p class="cc-pack-save amber">Save 40%</p></div>
+        <div class="cc-pack active" data-t="1" data-o="1 in 770" data-n="Incredible odds — only 770 entries!"><p class="cc-pack-count">1 ticket</p><p class="cc-pack-price">$249</p></div>
+        <div class="cc-pack" data-t="3" data-o="1 in 257" data-n="3x more chances to win!"><div class="cc-pack-badge">Popular</div><p class="cc-pack-count">3 tickets</p><p class="cc-pack-price">$597</p><p class="cc-pack-save green">Save 20%</p></div>
+        <div class="cc-pack" data-t="5" data-o="1 in 154" data-n="5x chances — serious player"><p class="cc-pack-count">5 tickets</p><p class="cc-pack-price">$896</p><p class="cc-pack-save amber">Save 28%</p></div>
+        <div class="cc-pack" data-t="10" data-o="1 in 77" data-n="10x chances — max advantage!"><p class="cc-pack-count">10 tickets</p><p class="cc-pack-price">$1,494</p><p class="cc-pack-save amber">Save 40%</p></div>
       </div>
     </div>
   </div>
@@ -1495,7 +1582,7 @@ footer {
   <!-- CARD — SOLD OUT — Aventador SVJ -->
   <div class="comp-card sold-out">
     <div class="cc-hero">
-      <p class="cc-badge" style="color: var(--red);">&#9673; Completed — Winner: James M.</p>
+      <p class="cc-badge" style="color: var(--red);">&#9673; Completed — May 10, 2026</p>
       <h3 class="cc-title">Lamborghini Aventador SVJ</h3>
       <p class="cc-sub">$420,000 value — <span class="sold-badge-inline">Sold out</span></p>
     </div>
@@ -1503,28 +1590,35 @@ footer {
       <img src="https://images.unsplash.com/photo-1617650728468-8581e439c864?w=900&q=80" alt="Lamborghini Aventador SVJ">
       <div class="car-specs-overlay"><span>V12 · 759 HP</span><span>0-60 in 2.8s</span><span>AWD</span><span>$420,000 MSRP</span></div>
     </div></div>
-    <div class="cc-gauge-section">
-      <div class="cc-gauge-left">
-        <div class="cc-gauge-wrap">
-          <svg viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="86" fill="none" stroke="#1a1a2e" stroke-width="11"/>
-            <circle cx="100" cy="100" r="86" fill="none" stroke="#22c55e" stroke-width="11" stroke-linecap="round" stroke-dasharray="540.35" stroke-dashoffset="0" style="transform:rotate(-90deg);transform-origin:center;"/>
-          </svg>
-          <div class="cc-gauge-center"><div class="cc-gauge-num">800</div><div class="cc-gauge-of">of 800 tickets</div></div>
-        </div>
-        <p class="cc-gauge-remaining" style="color: var(--red);">All tickets sold</p>
+    <!-- Winner result section -->
+    <div class="cc-winner-result">
+      <div class="cc-winner-header">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+        <span>Winner announced</span>
       </div>
-      <div class="cc-gauge-right">
-        <div class="cc-info-card">
-          <p class="cc-info-label">Final odds were</p>
-          <p class="cc-info-value">1 in 800</p>
+      <div class="cc-winner-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" alt="James M." class="cc-winner-avatar">
+        <div class="cc-winner-info">
+          <p class="cc-winner-name">James M.</p>
+          <p class="cc-winner-location">Miami, FL</p>
+          <p class="cc-winner-prize">Won the <strong>Aventador SVJ</strong></p>
         </div>
-        <div class="cc-info-card">
-          <p class="cc-info-label">Entry price was</p>
-          <p class="cc-info-value">$349</p>
-        </div>
-        <span class="cc-btn-ticket" style="background:#333;cursor:default;">Sold out</span>
       </div>
+      <div class="cc-winner-stats">
+        <div class="cc-winner-stat">
+          <span class="cc-ws-label">Tickets sold</span>
+          <span class="cc-ws-value">800 / 800</span>
+        </div>
+        <div class="cc-winner-stat">
+          <span class="cc-ws-label">Final odds</span>
+          <span class="cc-ws-value">1 in 800</span>
+        </div>
+        <div class="cc-winner-stat">
+          <span class="cc-ws-label">Entry price</span>
+          <span class="cc-ws-value">$349</span>
+        </div>
+      </div>
+      <a href="site_tirage.html" class="cc-btn-next">Enter the next competition →</a>
     </div>
   </div>
 
@@ -1690,6 +1784,41 @@ footer {
   });
   document.getElementById('scrollRight').addEventListener('click', function() {
     scroll.scrollBy({ left: 260, behavior: 'smooth' });
+  });
+})();
+
+// Card ticket pack interaction — each card is independent
+(function() {
+  document.querySelectorAll('.comp-card').forEach(function(card) {
+    var packs = card.querySelectorAll('.cc-pack[data-t]');
+    var oddsLabel = card.querySelector('.cc-info-label');
+    var oddsValue = card.querySelector('.cc-info-value');
+    var oddsNote = card.querySelector('.cc-info-note');
+    var infoCard = card.querySelector('.cc-info-card');
+    if (!packs.length || !oddsValue) return;
+
+    packs.forEach(function(pack) {
+      pack.addEventListener('click', function() {
+        // Remove active from siblings
+        packs.forEach(function(p) { p.classList.remove('active'); });
+        this.classList.add('active');
+
+        var t = this.dataset.t;
+        var o = this.dataset.o;
+        var n = this.dataset.n;
+
+        // Update odds display
+        if (oddsLabel) oddsLabel.textContent = 'Your odds with ' + t + (t === '1' ? ' ticket' : ' tickets');
+        if (oddsValue) oddsValue.textContent = o;
+        if (oddsNote) oddsNote.textContent = n;
+
+        // Flash effect
+        if (infoCard) {
+          infoCard.style.borderColor = '#22c55e';
+          setTimeout(function() { infoCard.style.borderColor = ''; }, 800);
+        }
+      });
+    });
   });
 })();
 </script>
